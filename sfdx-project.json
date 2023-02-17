@@ -2,11 +2,17 @@
   "packageDirectories": [
     {
       "path": "force-app",
-      "default": true
+      "default": true,
+      "package": "MyPackage",
+      "versionName": "1.0.0",
+      "versionNumber": "1.0.0.NEXT"
     }
   ],
   "name": "roberto_org",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "56.0"
+  "sourceApiVersion": "56.0",
+  "packageAliases": {
+    "MyPackage": "0Ho1U000000CaUzSAK"
+  }
 }
