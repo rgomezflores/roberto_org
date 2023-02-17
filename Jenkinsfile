@@ -113,8 +113,8 @@ node {
                 if (isUnix()) {
                     output = sh returnStdout: true, script: "${toolbelt}/sfdx force:package:version:create --package ${PACKAGE_NAME} --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg"
                 } else {
-                    //output = bat(returnStdout: true, script: "${toolbelt}/sfdx force:package:version:create --package ${PACKAGE_NAME} --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg").trim()
-                    output = bat(returnStdout: true, script: "${toolbelt}/sfdx package:version:create --package ${PACKAGE_NAME} --installation-key-bypass --wait 10 --json --target-hub-org rgomezflores@deloitte.com").trim()
+                    output = bat(returnStdout: true, script: "${toolbelt}/sfdx force:package:version:create --package ${PACKAGE_NAME} --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg").trim()
+                    //output = bat(returnStdout: true, script: "${toolbelt}/sfdx package:version:create --package ${PACKAGE_NAME} --installation-key-bypass --wait 10 --json --target-hub-org rgomezflores@deloitte.com").trim()
                     output = output.readLines().drop(1).join(" ")
                 }
 
