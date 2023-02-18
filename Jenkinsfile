@@ -21,12 +21,10 @@ node {
     parameters {
         string(
             name: 'StartCommit', 
-            defaultValue: '', 
             description: 'Use the SHA considered the Start Commit for your Delta Package'
         )
             string(
             name: 'EndCommit', 
-            defaultValue: '', 
             description: 'Use the SHA considered the End Commit for your Delta Package'
         )
     }
@@ -34,12 +32,10 @@ node {
     properties([
         parameters([
             string(
-                defaultValue: '',
                 description: 'Use the SHA considered the Start Commit for your Delta Package', 
                 name: 'StartCommit'), 
             string(
-                defaultValue: '',
-                description: 'Use the SHA considered the En Commit for your Delta Package', 
+                description: 'Use the SHA considered the End Commit for your Delta Package', 
                 name: 'EndCommit')
             ]
         )
