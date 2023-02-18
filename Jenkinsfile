@@ -22,10 +22,10 @@ node {
         parameters([
             string(
                 description: 'Use the SHA considered the Start Commit for your Delta Package', 
-                name: 'Start Commit'), 
+                name: 'StartCommit'), 
             string(
                 description: 'Use the SHA considered the En Commit for your Delta Package', 
-                name: 'End Commit')
+                name: 'EndCommit')
             ]
         )
     ])
@@ -114,6 +114,14 @@ node {
             stage('Clone Git Repository') {
                 git branch: 'master', url: 'https://github.com/rgomezflores/roberto_org.git'
             }
+
+            // -------------------------------------------------------------------------
+            // Define SHA's
+            // -------------------------------------------------------------------------
+
+            stage('Defining SHA') {
+                echo "You defined this Start Commit: ${params.StartCommit}"
+                echo "You defined this End Commit: ${params.EndCommit}"
         }
     }
 }
