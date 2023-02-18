@@ -50,7 +50,9 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Install Salesforce CLI') {
-                sh 'sfdx plugins:install salesforcedx@latest'
+                script {
+                    bat 'echo y | sfdx plugins:install salesforcedx@latest'
+                }
             }
 
             // -------------------------------------------------------------------------
