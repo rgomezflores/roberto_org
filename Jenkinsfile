@@ -36,17 +36,7 @@ node {
                 name: 'StartCommit'), 
             string(
                 description: 'Use the SHA considered the End Commit for your Delta Package', 
-                name: 'EndCommit')
-            ]
-        )
-    ])
-
-    // -------------------------------------------------------------------------
-    // Parameters multiple Values
-    // -------------------------------------------------------------------------
-
-    properties([
-        parameters([
+                name: 'EndCommit'),
             extendedChoice(
                 description: 'Select your best option', 
                 descriptionPropertyValue: 'Valuessss', 
@@ -58,6 +48,16 @@ node {
                 value: '"ValueA","ValueB","ValueC","ValueD"', 
                 visibleItemCount: 4
             )
+        ])
+    ])
+
+    // -------------------------------------------------------------------------
+    // Parameters multiple Values
+    // -------------------------------------------------------------------------
+
+    properties([
+        parameters([
+
         ])
     ])
 
