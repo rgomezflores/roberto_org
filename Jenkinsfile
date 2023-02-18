@@ -2,6 +2,7 @@ pipeline {
 
   environment {
     SF_USERNAME = "rgomezflores@deloite.com"
+    SERVER_KEY_CREDENTALS_ID = "c3fc289a-7184-482a-aa29-be9d34d6a272"
     SF_PASSWORD = "Abcd3gh!.00"
     SF_INSTANCE_URL = "https://login.salesforce.com"
   }
@@ -18,7 +19,7 @@ pipeline {
       steps {
         withCredentials([[
           $class: 'UsernamePasswordMultiBinding',
-          credentialsId: 'salesforce-creds',
+          credentialsId: 'SERVER_KEY_CREDENTALS_ID',
           usernameVariable: 'SF_USERNAME',
           passwordVariable: 'SF_PASSWORD'
         ]]) {
