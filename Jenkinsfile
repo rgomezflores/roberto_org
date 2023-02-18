@@ -39,25 +39,15 @@ node {
                 name: 'EndCommit'),
             extendedChoice(
                 description: 'Select your best option', 
-                descriptionPropertyValue: 'Valuessss', 
+                descriptionPropertyValue: 'SelectYourOption', 
                 multiSelectDelimiter: 'A,B,C,D', 
                 name: 'Validation or Deployment', 
                 quoteValue: true, 
                 saveJSONParameterToFile: false, 
-                type: 'PT_SINGLE_SELECT', 
+                type: 'PT_MULTI_SELECT', 
                 value: '"ValueA","ValueB","ValueC","ValueD"', 
                 visibleItemCount: 4
             )
-        ])
-    ])
-
-    // -------------------------------------------------------------------------
-    // Parameters multiple Values
-    // -------------------------------------------------------------------------
-
-    properties([
-        parameters([
-
         ])
     ])
 
