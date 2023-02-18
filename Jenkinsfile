@@ -46,7 +46,7 @@ node {
 
 
             // -------------------------------------------------------------------------
-            // Install Slaesforce CLI
+            // Install Salesforce CLI
             // -------------------------------------------------------------------------
 
             stage('Install Salesforce CLI') {
@@ -56,10 +56,20 @@ node {
             }
 
             // -------------------------------------------------------------------------
+            // Verify Salesforce CLI
+            // -------------------------------------------------------------------------
+
+            stage('Verify SFDX CLI Installation') {
+                sh 'sfdx --version'
+                sh 'sfdx --update'
+                sh 'sfdx --version'
+            }
+
+            // -------------------------------------------------------------------------
             // Install sfdx-git-delta plugin
             // -------------------------------------------------------------------------
 
-            stage('Install SGD PLugin') {
+            stage('Install SGD Plugin') {
                 script {
                     bat 'echo y | npm install sfdx-git-delta'
                 }
