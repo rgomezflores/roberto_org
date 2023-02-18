@@ -64,7 +64,13 @@ node {
                 if (rc != 0) {
                     error 'Salesforce check version failed.'
                 }
+            }
 
+            // -------------------------------------------------------------------------
+            // Update Salesforce CLI
+            // -------------------------------------------------------------------------
+
+            stage('Update SFDX CLI') {
                 rc = command "${toolbelt}/sfdx update"
                 if (rc != 0) {
                     error 'Salesforce update version failed.'
@@ -85,6 +91,7 @@ node {
                 if (rc != 0) {
                     error 'SGD plugin installation failed.'
                 }
+            }
 
             // -------------------------------------------------------------------------
             // Clone Git Repository
