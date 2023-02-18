@@ -1,11 +1,14 @@
 pipeline {
+
+  environment {
+    SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
+    SF_USERNAME=env.SF_USERNAME
+    SF_PASSWORD=env.SF_PASSWORD
+    SERVER_KEY_CREDENTALS_ID=env.SERVER_KEY_CREDENTALS_ID
+    SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://login.salesforce.com"
+  }
+
   agent any
-  
-  def SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
-  def SF_USERNAME=env.SF_USERNAME
-  def SF_PASSWORD=env.SF_PASSWORD
-  def SERVER_KEY_CREDENTALS_ID=env.SERVER_KEY_CREDENTALS_ID
-  def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://login.salesforce.com"
 
   stages {
 
