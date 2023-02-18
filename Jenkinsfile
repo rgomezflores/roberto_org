@@ -22,11 +22,11 @@ node {
         string(
             name: 'StartCommit', 
             description: 'Use the SHA considered the Start Commit for your Delta Package'
-        ),
+        )
         string(
             name: 'EndCommit', 
             description: 'Use the SHA considered the End Commit for your Delta Package'
-        ).
+        )
         extendedChoice(
             name: 'Validation_Deployment',
             description: 'Select your best option'
