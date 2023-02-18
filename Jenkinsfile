@@ -51,7 +51,7 @@ node {
 
             stage('Install Salesforce CLI') {
                 script {
-                    bat 'echo y | sfdx plugins:install salesforcedx@latest'
+                    bat 'echo y | npm install sfdx-cli --global'
                 }
             }
 
