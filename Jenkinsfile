@@ -50,9 +50,7 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Install Salesforce CLI') {
-                steps {
                 sh 'sfdx plugins:install salesforcedx@latest'
-                }
             }
 
             // -------------------------------------------------------------------------
@@ -60,10 +58,8 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Install SGD PLugin') {
-                steps {
                 script {
                     bat 'echo y | sfdx plugins:install sfdx-git-delta'
-                }
                 }
             }
 
@@ -72,9 +68,7 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Clone Git Repository') {
-                steps {
                 git branch: 'master', url: 'https://github.com/rgomezflores/roberto_org.git'
-                }
             }
         }
     }
