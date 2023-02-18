@@ -8,6 +8,7 @@ node {
     def SF_USERNAME=env.SF_USERNAME
     def SERVER_KEY_CREDENTALS_ID=env.SERVER_KEY_CREDENTALS_ID
     def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://login.salesforce.com"
+    def toolbelt = tool 'toolbelt'
 
     // -------------------------------------------------------------------------
     // Check out code from source control.
