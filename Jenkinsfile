@@ -14,6 +14,21 @@ node {
 
     def toolbelt = tool 'toolbelt'
 
+    // -------------------------------------------------------------------------
+    // Parameters
+    // -------------------------------------------------------------------------
+    
+    properties([
+        parameters([
+            string(
+                description: 'Use the SHA considered the Start Commit for your Delta Package', 
+                name: 'Start Commit'), 
+            string(
+                description: 'Use the SHA considered the En Commit for your Delta Package', 
+                name: 'End Commit')
+            ]
+        )
+    ])
 
     // -------------------------------------------------------------------------
     // Check out code from source control.
@@ -89,17 +104,6 @@ node {
             stage('Install SGD Plugin') {
                 script {
                     bat 'echo y | npm install sfdx-git-delta@latest-rc'
-                }
-            }
-
-            // -------------------------------------------------------------------------
-            // Verify SGD Plugin Installation
-            // -------------------------------------------------------------------------
-
-            stage('Verify SFDX CLI Installation') {
-                rc = command "${toolbelt}/sfdx plugins"
-                if (rc != 0) {
-                    error 'SGD PLugin check version failed.'
                 }
             }
 
