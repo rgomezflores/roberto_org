@@ -60,9 +60,11 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Verify SFDX CLI Installation') {
-                sh 'sfdx version'
-                sh 'sfdx update'
-                sh 'sfdx version'
+                script {
+                    bat 'sfdx version'
+                    bat 'sfdx update'
+                    bat 'sfdx version'
+                }
             }
 
             // -------------------------------------------------------------------------
