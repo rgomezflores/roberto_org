@@ -22,11 +22,16 @@ node {
         string(
             name: 'StartCommit', 
             description: 'Use the SHA considered the Start Commit for your Delta Package'
-        )
-            string(
+        ),
+        string(
             name: 'EndCommit', 
             description: 'Use the SHA considered the End Commit for your Delta Package'
-        )
+        ).
+        extendedChoice(
+            name: 'Validation_Deployment',
+            description: 'Select your best option'
+        ) 
+                 
     }
     
     properties([
@@ -38,10 +43,9 @@ node {
                 description: 'Use the SHA considered the End Commit for your Delta Package', 
                 name: 'EndCommit'),
             extendedChoice(
-                description: 'Select your best option', 
-                descriptionPropertyValue: 'SelectYourOption', 
+                description: 'Select your best option',  
                 multiSelectDelimiter: 'A,B,C,D', 
-                name: 'Validation or Deployment', 
+                name: 'Validation_Deployment', 
                 quoteValue: true, 
                 saveJSONParameterToFile: false, 
                 type: 'PT_MULTI_SELECT', 
@@ -137,12 +141,13 @@ node {
             }
 
             // -------------------------------------------------------------------------
-            // Define SHA's
+            // Parameters checks
             // -------------------------------------------------------------------------
 
-            stage('Defining SHA') {
+            stage('Parameters Values') {
                 echo "You defined this Start Commit: ${params.StartCommit}"
                 echo "You defined this End Commit: ${params.EndCommit}"
+                echo "You defined this Validation: ${params.Validation_Deployment}"
             }
         }
     }
