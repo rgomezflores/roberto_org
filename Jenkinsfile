@@ -1,11 +1,9 @@
 pipeline {
 
   environment {
-    SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
-    SF_USERNAME=env.SF_USERNAME
-    SF_PASSWORD=env.SF_PASSWORD
-    SERVER_KEY_CREDENTALS_ID=env.SERVER_KEY_CREDENTALS_ID
-    SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://login.salesforce.com"
+    SF_USERNAME = "rgomezflores@deloite.com"
+    SF_PASSWORD = "Abcd3gh!.00"
+    SF_INSTANCE_URL = "https://login.salesforce.com"
   }
 
   agent any
