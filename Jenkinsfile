@@ -61,7 +61,7 @@ node {
 
             stage('Install SGD PLugin') {
                 script {
-                    bat 'echo y | sfdx plugins:install sfdx-git-delta'
+                    bat 'echo y | npm install sfdx-git-delta'
                 }
             }
 
