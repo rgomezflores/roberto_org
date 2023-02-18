@@ -15,7 +15,7 @@ node {
     def toolbelt = tool 'toolbelt'
 
     // -------------------------------------------------------------------------
-    // Parameters
+    // Parameters SHAs
     // -------------------------------------------------------------------------
 
     parameters {
@@ -39,6 +39,26 @@ node {
                 name: 'EndCommit')
             ]
         )
+    ])
+
+    // -------------------------------------------------------------------------
+    // Parameters multiple Values
+    // -------------------------------------------------------------------------
+
+    properties([
+        parameters([
+            extendedChoice(
+                description: 'Select your best option', 
+                descriptionPropertyValue: 'Valuessss', 
+                multiSelectDelimiter: 'A,B,C,D', 
+                name: 'Validation or Deployment', 
+                quoteValue: true, 
+                saveJSONParameterToFile: false, 
+                type: 'PT_SINGLE_SELECT', 
+                value: '"ValueA","ValueB","ValueC","ValueD"', 
+                visibleItemCount: 4
+            )
+        ])
     ])
 
     // -------------------------------------------------------------------------
