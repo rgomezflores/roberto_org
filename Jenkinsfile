@@ -122,6 +122,7 @@ node {
             stage('Defining SHA') {
                 echo "You defined this Start Commit: ${params.StartCommit}"
                 echo "You defined this End Commit: ${params.EndCommit}"
+            }
         }
     }
 }
