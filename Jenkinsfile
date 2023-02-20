@@ -16,7 +16,7 @@ pipeline {
                     @echo off
                     echo Installing Salesforce CLI...
                     curl https://developer.salesforce.com/media/salesforce-cli/sfdx-windows-latest.zip --output sfdx.zip
-                    powershell Expand-Archive -Path sfdx.zip -DestinationPath "%ProgramFiles%\sfdx"
+                    powershell Expand-Archive -Path sfdx.zip -DestinationPath "%ProgramFiles%/sfdx"
                     setx PATH "%PATH%;%ProgramFiles%/sfdx/bin"
                     echo Salesforce CLI installed successfully.
                 '''
