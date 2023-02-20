@@ -156,11 +156,19 @@ node {
 
             stage('Create Delta Package') {
                 sh 'mkdir -p DeltaPackage'
-                rc = command "${toolbelt}/sfdx sgd:source:delta --to "$(params.EndCommit)" --from "$(params.StartCommit)" --output "./DeltaPackage" --generate-delta"
+                rc = command "${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta"
                 if (rc != 0) {
                     error 'Error during Delta Package creation'
                 }
             }
         }
+    }
+}
+
+def command(script) {
+    if (isUnix()) {
+        return sh(returnStatus: true, script: script);
+    } else {
+        return bat(returnStatus: true, script: script);
     }
 }
