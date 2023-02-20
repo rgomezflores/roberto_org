@@ -128,11 +128,13 @@ node {
     
              stage('Install SGD Plugin') {
                 bat '''
-                rc = echo 'y' | command "${toolbelt}/sfdx plugins:install sfdx-git-delta"
-                if (rc != 0) {
-                    error 'Salesforce check version failed.'
-                }
+                echo 'y' | command "${toolbelt}/sfdx plugins:install sfdx-git-delta"
                 '''
+                // rc = echo 'y' | command "${toolbelt}/sfdx plugins:install sfdx-git-delta"
+                // if (rc != 0) {
+                //     error 'Salesforce check version failed.'
+                // }  
+
             } 
 
             // -------------------------------------------------------------------------
