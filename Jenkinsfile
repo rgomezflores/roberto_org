@@ -85,25 +85,26 @@ node {
             }
 
 
-            // -------------------------------------------------------------------------
-            // Install Salesforce CLI
-            // -------------------------------------------------------------------------
+            // // -------------------------------------------------------------------------
+            // // Install Salesforce CLI
+            // // -------------------------------------------------------------------------
 
-            stage('Install Salesforce CLI') {
-                script {
-                    bat 'echo y | npm install sfdx-cli --global'
-                }
-            }
+            // stage('Install Salesforce CLI') {
+            //     script {
+            //         bat 'echo y | npm install sfdx-cli --global'
+            //     }
+            // }
 
             // -------------------------------------------------------------------------
             // Verify Salesforce CLI
             // -------------------------------------------------------------------------
 
             stage('Verify SFDX CLI Installation') {
-                rc = command "${toolbelt}/sfdx version"
-                if (rc != 0) {
-                    error 'Salesforce check version failed.'
-                }
+                sh 'sfdx --version'
+                // rc = command "${toolbelt}/sfdx version"
+                // if (rc != 0) {
+                //     error 'Salesforce check version failed.'
+                // }
             }
 
             // -------------------------------------------------------------------------
