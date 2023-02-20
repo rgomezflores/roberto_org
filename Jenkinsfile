@@ -130,7 +130,10 @@ node {
                 // input message: 'Continue installation? (y/N)', ok: 'y'
     
              stage('Install SGD Plugin') {
-                sh "echo 'y' | sfdx plugins:install sfdx-git-delta"
+                rc = command "${toolbelt}/sfdx version | echo 'y'"
+                if (rc != 0) {
+                    error 'Salesforce check version failed.'
+                }
             } 
 
             // -------------------------------------------------------------------------
