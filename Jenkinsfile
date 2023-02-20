@@ -158,12 +158,12 @@ node {
                 dir ('DeltaPackage') {
                     writeFile file:'.ignore', text:''
                 }
+                
                 rc = command "${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta"
                 if (rc != 0) {
                     error 'Error during Delta Package creation'
-                }
-                }
-            }
+                }   
+            }s
         }
     }
 }
