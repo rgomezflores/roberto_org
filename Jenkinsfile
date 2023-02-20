@@ -25,7 +25,7 @@ pipeline {
 
         stage('Check Salesforce CLI Installation') {
             steps {
-                bat 'sfdx --version'
+                bat 'sfdx version'
             }
         }
 
