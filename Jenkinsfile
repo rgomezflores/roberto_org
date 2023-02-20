@@ -16,6 +16,10 @@ node {
     // def sfdx = tool 'sfdx'
     // def sgd = tool 'sgd'
 
+    environment {
+        PATH = "C:\Program Files\sfdx\bin"
+    }
+
     // -------------------------------------------------------------------------
     // Parameters SHAs
     // -------------------------------------------------------------------------
@@ -90,11 +94,11 @@ node {
             // // Install Salesforce CLI
             // // -------------------------------------------------------------------------
 
-            stage('Install Salesforce CLI') {
-                script {
-                    bat 'echo y | npm install sfdx-cli --global'
-                }
-            }
+            // stage('Install Salesforce CLI') {
+            //     script {
+            //         bat 'echo y | npm install sfdx-cli --global'
+            //     }
+            // }
 
             // -------------------------------------------------------------------------
             // Verify Salesforce CLI
