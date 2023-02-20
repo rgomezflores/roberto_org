@@ -13,8 +13,8 @@ node {
     def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://login.salesforce.com"
 
     def toolbelt = tool 'toolbelt'
-    def sfdx = tool 'sfdx'
-    def sgd = tool 'sgd'
+    // def sfdx = tool 'sfdx'
+    // def sgd = tool 'sgd'
 
     // -------------------------------------------------------------------------
     // Parameters SHAs
@@ -32,8 +32,7 @@ node {
         extendedChoice(
             name: 'Validation_Deployment',
             description: 'Select your best option'
-        ) 
-                 
+        )          
     }
     
     properties([
@@ -91,18 +90,20 @@ node {
             // // Install Salesforce CLI
             // // -------------------------------------------------------------------------
 
-            // stage('Install Salesforce CLI') {
-            //     script {
-            //         bat 'echo y | npm install sfdx-cli --global'
-            //     }
-            // }
+            stage('Install Salesforce CLI') {
+                script {
+                    bat 'echo y | npm install sfdx-cli --global'
+                }
+            }
 
             // -------------------------------------------------------------------------
             // Verify Salesforce CLI
             // -------------------------------------------------------------------------
 
             stage('Verify SFDX CLI Installation') {
-                sh '${sfdx} --version'
+                script {
+                    bat 'sfdx --version'
+                }
                 // rc = command "${toolbelt}/sfdx version"
                 // if (rc != 0) {
                 //     error 'Salesforce check version failed.'
