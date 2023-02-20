@@ -107,17 +107,17 @@ node {
             // Update Salesforce CLI
             // -------------------------------------------------------------------------
 
-            stage('Update SFDX CLI') {
-                rc = command "${toolbelt}/sfdx update"
-                if (rc != 0) {
-                    error 'Salesforce update version failed.'
-                }
+            // stage('Update SFDX CLI') {
+            //     rc = command "${toolbelt}/sfdx update"
+            //     if (rc != 0) {
+            //         error 'Salesforce update version failed.'
+            //     }
 
-                rc = command "${toolbelt}/sfdx version"
-                if (rc != 0) {
-                    error 'Salesforce check version failed.'
-                }
-            }
+            //     rc = command "${toolbelt}/sfdx version"
+            //     if (rc != 0) {
+            //         error 'Salesforce check version failed.'
+            //     }
+            // }
 
             // -------------------------------------------------------------------------
             // Install sfdx-git-delta plugin
@@ -127,7 +127,7 @@ node {
                 // input message: 'Continue installation? (y/N)', ok: 'y'
     
              stage('Install SGD Plugin') {
-                rc = command "${toolbelt}/echo 'y' | sfdx plugins:install sfdx-git-delta"
+                rc = command "echo 'y' | ${toolbelt}/sfdx plugins:install sfdx-git-delta"
                 if (rc != 0) {
                     error 'Salesforce check version failed.'
                 }  
