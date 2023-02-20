@@ -12,9 +12,11 @@ pipeline {
         }
         stage('Install Salesforce CLI') {
             steps {
-                bat 'curl https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable/sfdx-win32-x64.tar.gz --output sfdx-win32-x64.tar.xz'
-                bat 'tar xJf sfdx-win32-x64.tar.xz'
-                bat './sfdx/install'
+                bat 'wget https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable/sfdx-win32-x64.tar.xz'
+                bat 'mkdir ~/sfdx'
+                bat 'tar xJf sfdx-win32-x644.tar.xz -C ~/sfdx --strip-components 1'
+                bat 'export PATH=~/sfdx/bin:$PATH'
+                bat 'PATH=~/sfdx/bin:$PATH'
             }
         }
 
