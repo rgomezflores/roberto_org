@@ -149,6 +149,22 @@ node {
                 echo "You defined this End Commit: ${params.EndCommit}"
                 echo "You defined this Validation: ${params.Validation_Deployment}"
             }
+
+            // -------------------------------------------------------------------------
+            // Create Delta Packages
+            // -------------------------------------------------------------------------
+
+            stage('Create Delta Package') {
+                steps {
+                    sh 'mkdir -p DeltaPackage'
+                    rc = command "${toolbelt}/sfdx sgd:source:delta --to "$(params.EndCommit)" --from "$(params.StartCommit)" --output "./DeltaPackage" --generate-delta"
+                    if (rc != 0) {
+                        error 'Error during Delta Package creation'
+                    }
+                }
+            }
+
+
         }
     }
 }
