@@ -86,11 +86,11 @@ node {
             // Install Salesforce CLI
             // -------------------------------------------------------------------------
 
-            stage('Install Salesforce CLI') {
-                script {
-                    bat 'echo y | npm install sfdx-cli --global'
-                }
-            }
+            // stage('Install Salesforce CLI') {
+            //     script {
+            //         bat 'echo y | npm install sfdx-cli --global'
+            //     }
+            // }
 
             // -------------------------------------------------------------------------
             // Verify Salesforce CLI
