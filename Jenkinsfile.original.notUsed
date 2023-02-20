@@ -149,7 +149,7 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Display Install Scratch Org') {
-                rc = echo "y" | command "${toolbelt}/sfdx force:org:display --targetusername installorg"
+                rc = echo 'y' | command "${toolbelt}/sfdx force:org:display --targetusername installorg"
                 if (rc != 0) {
                     error 'Salesforce install scratch org display failed.'
                 }
