@@ -128,7 +128,7 @@ node {
 
             stage('Install SGD Plugin') {
                 // input message: 'Continue installation? (y/N)', ok: 'y'
-                rc = command "${toolbelt}/sfdx plugins:install sfdx-git-delta -y"
+                rc = command "${toolbelt}/sfdx plugins:install sfdx-git-delta --force"
                 if (rc != 0) {
                     error 'Install plugin failed.'
                 }
