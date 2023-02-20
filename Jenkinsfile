@@ -158,6 +158,7 @@ node {
                 dir ('DeltaPackage') {
                     writeFile file:'.ignore', text:''
                 }
+            }
                 
             // -------------------------------------------------------------------------
             // Create Delta Packages
