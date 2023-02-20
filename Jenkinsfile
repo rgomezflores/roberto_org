@@ -135,8 +135,8 @@ node {
 /*             stage('Install SGD Plugin') {
                 script {
                     bat 'echo y | npm install sfdx-git-delta@latest-rc'
-                }
-            } */
+                }*/
+            } 
 
             // -------------------------------------------------------------------------
             // Clone Git Repository
