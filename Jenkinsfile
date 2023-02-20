@@ -131,7 +131,12 @@ node {
                 rc = command "${toolbelt}/sfdx plugins:install sfdx-git-delta"
                 if (rc != 0) {
                     error 'Salesforce check version failed.'
-                }  
+                }
+            
+                rc1 = command "${toolbelt}/sfdx plugins"
+                if (rc1 != 0) {
+                    error 'Salesforce check version failed.'
+                }
 
             }
 
@@ -145,16 +150,16 @@ node {
                 }
             }
 
-            // -------------------------------------------------------------------------
-            // Create Delta Packages
-            // -------------------------------------------------------------------------
+            // // -------------------------------------------------------------------------
+            // // Create Delta Packages
+            // // -------------------------------------------------------------------------
 
-            stage('Create Delta Packages') {
-                rc = command "${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta"
-                if (rc != 0) {
-                    error 'Error to create the DeltaPackage.'
-                }
-            }
+            // stage('Create Delta Packages') {
+            //     rc = command "${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta"
+            //     if (rc != 0) {
+            //         error 'Error to create the DeltaPackage.'
+            //     }
+            // }
 
             // -------------------------------------------------------------------------
             // Clone Git Repository
