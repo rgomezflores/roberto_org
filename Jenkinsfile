@@ -133,7 +133,28 @@ node {
                     error 'Salesforce check version failed.'
                 }  
 
-            } 
+            }
+
+            // -------------------------------------------------------------------------
+            // Create Directory
+            // -------------------------------------------------------------------------
+
+            stage('Create Directory') {
+                dir ('DeltaPackage') {
+                    writeFile file:'.ignore', text:''
+                }
+            }
+
+            // -------------------------------------------------------------------------
+            // Create Delta Packages
+            // -------------------------------------------------------------------------
+
+            stage('Create Delta Packages') {
+                rc = command "${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta"
+                if (rc != 0) {
+                    error 'Error to create the DeltaPackage.'
+                }
+            }
 
             // -------------------------------------------------------------------------
             // Clone Git Repository
@@ -151,27 +172,6 @@ node {
                 echo "You defined this Start Commit: ${params.StartCommit}"
                 echo "You defined this End Commit: ${params.EndCommit}"
                 echo "You defined this Validation: ${params.Validation_Deployment}"
-            }
-
-            // -------------------------------------------------------------------------
-            // Create Directory
-            // -------------------------------------------------------------------------
-
-            stage('Create Directory') {
-                dir ('DeltaPackage') {
-                    writeFile file:'.ignore', text:''
-                }
-            }
-                
-            // -------------------------------------------------------------------------
-            // Create Delta Packages
-            // -------------------------------------------------------------------------
-
-            stage('Create Delta Packages') {
-                rc = command "${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta"
-                if (rc != 0) {
-                    error 'Error to create the DeltaPackage.'
-                }
             }
         }
     }
