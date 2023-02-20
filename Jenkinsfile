@@ -17,7 +17,7 @@ node {
     // def sgd = tool 'sgd'
 
     environment {
-        PATH = 'C:\Program Files\sfdx\bin'
+        PATH = 'C:/Program Files/sfdx/bin'
     }
 
     // -------------------------------------------------------------------------
