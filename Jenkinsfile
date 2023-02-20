@@ -151,7 +151,7 @@ node {
             }
 
             // -------------------------------------------------------------------------
-            // Create Delta Packages
+            // Create Directory
             // -------------------------------------------------------------------------
 
             stage('Create Delta Package') {
@@ -159,11 +159,16 @@ node {
                     writeFile file:'.ignore', text:''
                 }
                 
+            // -------------------------------------------------------------------------
+            // Create Delta Packages
+            // -------------------------------------------------------------------------
+
+            stage('Create Delta Packages') {
                 rc = command "${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta"
                 if (rc != 0) {
-                    error 'Error during Delta Package creation'
-                }   
-            }s
+                    error 'Error DeltaPackage.'
+                }
+            }
         }
     }
 }
