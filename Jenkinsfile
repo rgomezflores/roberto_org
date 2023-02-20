@@ -128,11 +128,10 @@ node {
     
             stage('Install SGD Plugin') {
                 'echo y'
-                command "${toolbelt}/sfdx plugins:install sfdx-git-delta"
-                // rc = command "${toolbelt}/sfdx plugins:install sfdx-git-delta"
-                // if (rc != 0) {
-                //     error 'Salesforce check version failed.'
-                // }  
+                rc = command "${toolbelt}/sfdx plugins:install sfdx-git-delta"
+                if (rc != 0) {
+                    error 'Salesforce check version failed.'
+                }  
 
             } 
 
@@ -169,9 +168,9 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Create Delta Packages') {
-                rc = command '${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta'
+                rc = command "${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta"
                 if (rc != 0) {
-                    error 'Error DeltaPackage.'
+                    error 'Error to create the DeltaPackage.'
                 }
             }
         }
