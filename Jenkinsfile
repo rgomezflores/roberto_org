@@ -155,9 +155,9 @@ node {
             // Create Delta Packages
             // -------------------------------------------------------------------------
 
-            // stage('Create Delta Packages') {
-            //     command "${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta"
-            // }
+            stage('Create Delta Packages') {
+                command "${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta"
+            }
 
             // -------------------------------------------------------------------------
             // Clone Git Repository
