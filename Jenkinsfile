@@ -102,7 +102,7 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Verify SFDX CLI Installation') {
-                command "${sfdx} --version"
+                sh '${sfdx} --version'
                 // rc = command "${toolbelt}/sfdx version"
                 // if (rc != 0) {
                 //     error 'Salesforce check version failed.'
