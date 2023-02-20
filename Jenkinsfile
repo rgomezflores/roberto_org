@@ -155,7 +155,6 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Create Delta Package') {
-                sh 'ls -l'
                 dir ('DeltaPackage') {
                     rc = command "${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output . --generate-delta"
                     if (rc != 0) {
