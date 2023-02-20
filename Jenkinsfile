@@ -155,12 +155,13 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Create Delta Package') {
-                jobDsl scriptText: """folder('DeltaPackage'){
+                dir ('DeltaPackage') {
                     description('TO add the new Delta Packages')
-                    displayName('DeltaPackage')}"""
-                rc = command '${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta'
-                if (rc != 0) {
-                    error 'Error during Delta Package creation'
+                    displayName('DeltaPackage')
+                    rc = command '${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output . --generate-delta'
+                    if (rc != 0) {
+                        error 'Error during Delta Package creation'
+                    }
                 }
             }
         }
