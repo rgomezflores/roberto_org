@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Install Salesforce CLI') {
             steps {
-                bat "sfdx-cli-windows-x64.exe /passive"
+                bat 'echo y | npm install sfdx-cli --global'
             }
         }
 
