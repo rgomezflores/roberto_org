@@ -127,10 +127,16 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Install SGD Plugin') {
+                rc = command "${toolbelt}/sfdx plugins:install sfdx-git-delta"
+                if (rc != 0) {
+                    error 'Install plugin failed.'
+                }
+
+/*             stage('Install SGD Plugin') {
                 script {
                     bat 'echo y | npm install sfdx-git-delta@latest-rc'
                 }
-            }
+            } */
 
             // -------------------------------------------------------------------------
             // Clone Git Repository
