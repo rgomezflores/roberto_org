@@ -12,23 +12,13 @@ pipeline {
         }
         stage('Install Salesforce CLI') {
             steps {
-                // Download the Salesforce CLI installer
-                bat 'curl https://developer.salesforce.com/media/salesforce-cli/sfdx-windows-latest.zip --output sfdx.zip'
-
-                // Extract the Salesforce CLI archive
-                bat 'powershell Expand-Archive -LiteralPath sfdx.zip -DestinationPath sfdx'
-
-                // Add the Salesforce CLI executable to the system path
-                bat 'set PATH=%PATH%;%cd%\\sfdx\\bin'
-
-                // Verify the Salesforce CLI installation
-                bat 'sfdx version'
+                bat "sfdx-cli-windows-x64.exe /passive"
             }
         }
 
         stage('Check Salesforce CLI Installation') {
             steps {
-                bat 'sfdx version'
+                bat "sfdx --version"
             }
         }
 
