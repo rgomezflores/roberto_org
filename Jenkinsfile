@@ -130,6 +130,7 @@ node {
                 echo "y"
                 command "${toolbelt}/sfdx plugins:install sfdx-git-delta"
                 echo "y"
+                command "${toolbelt}/sfdx plugins:install sfpowerkit"
                 command "${toolbelt}/sfdx plugins"
             }
 
@@ -155,9 +156,9 @@ node {
             // Create Delta Packages
             // -------------------------------------------------------------------------
 
-            stage('Create Delta Packages') {
-                command "${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta"
-            }
+            // stage('Create Delta Packages') {
+            //     command "${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta"
+            // }
 
             // -------------------------------------------------------------------------
             // Clone Git Repository
