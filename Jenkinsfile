@@ -16,10 +16,6 @@ node {
     // def sfdx = tool 'sfdx'
     // def sgd = tool 'sgd'
 
-    environment {
-        PATH = 'C:/Program Files/sfdx/bin'
-    }
-
     // -------------------------------------------------------------------------
     // Parameters SHAs
     // -------------------------------------------------------------------------
@@ -90,24 +86,22 @@ node {
             }
 
 
-            // // -------------------------------------------------------------------------
-            // // Install Salesforce CLI
-            // // -------------------------------------------------------------------------
+            // -------------------------------------------------------------------------
+            // Install Salesforce CLI
+            // -------------------------------------------------------------------------
 
-            // stage('Install Salesforce CLI') {
-            //     script {
-            //         bat 'echo y | npm install sfdx-cli --global'
-            //     }
-            // }
+            stage('Install Salesforce CLI') {
+                script {
+                    bat 'echo y | npm install sfdx-cli --global'
+                }
+            }
 
             // -------------------------------------------------------------------------
             // Verify Salesforce CLI
             // -------------------------------------------------------------------------
 
             stage('Verify SFDX CLI Installation') {
-                script {
-                    bat 'sfdx --version'
-                }
+                bat 'sfdx --version'
                 // rc = command "${toolbelt}/sfdx version"
                 // if (rc != 0) {
                 //     error 'Salesforce check version failed.'
