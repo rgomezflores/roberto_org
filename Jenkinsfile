@@ -131,7 +131,7 @@ node {
     
              stage('Install SGD Plugin') {
                 script {
-                    bat 'echo y | rc = command "${toolbelt}/sfdx plugins:install sfdx-git-delta --force"'
+                    bat "echo y" | rc = command "${toolbelt}/sfdx plugins:install sfdx-git-delta --force"
                     if (rc != 0) {
                         error 'Install plugin failed.'
                     }
