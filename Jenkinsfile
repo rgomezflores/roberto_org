@@ -141,16 +141,13 @@ node {
                 }
             }
 
-            // // -------------------------------------------------------------------------
-            // // Create Delta Packages
-            // // -------------------------------------------------------------------------
+            // -------------------------------------------------------------------------
+            // Create Delta Packages
+            // -------------------------------------------------------------------------
 
-            // stage('Create Delta Packages') {
-            //     rc = command "${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta"
-            //     if (rc != 0) {
-            //         error 'Error to create the DeltaPackage.'
-            //     }
-            // }
+            stage('Create Delta Packages') {
+                command "${toolbelt}/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta"
+            }
 
             // -------------------------------------------------------------------------
             // Clone Git Repository
