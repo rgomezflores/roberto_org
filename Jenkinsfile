@@ -129,7 +129,7 @@ node {
             stage('Install SGD Plugin') {
                 echo "y"
                 command "${toolbelt}/sfdx plugins:install sfdx-git-delta"
-                echo "y" | command "${toolbelt}/sfdx plugins:install sfpowerkit"
+                bat '''echo "y" | command "${toolbelt}/sfdx plugins:install sfpowerkit"'''
                 command "${toolbelt}/sfdx plugins"
             }
 
