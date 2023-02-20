@@ -130,9 +130,7 @@ node {
                 // input message: 'Continue installation? (y/N)', ok: 'y'
     
              stage('Install SGD Plugin') {
-                script {
-                    bat 'echo y | sfdx plugins:install sfdx-git-delta'
-                }
+                sh "echo 'y' | sfdx plugins:install sfdx-git-delta"
             } 
 
             // -------------------------------------------------------------------------
