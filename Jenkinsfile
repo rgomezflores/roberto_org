@@ -126,17 +126,16 @@ node {
             // Install sfdx-git-delta plugin
             // -------------------------------------------------------------------------
 
-            stage('Install SGD Plugin') {
+            //stage('Install SGD Plugin') {
                 // input message: 'Continue installation? (y/N)', ok: 'y'
-                rc = command "echo y | ${toolbelt}/sfdx plugins:install sfdx-git-delta --force"
-                if (rc != 0) {
-                    error 'Install plugin failed.'
-                }
-
-/*             stage('Install SGD Plugin') {
+    
+             stage('Install SGD Plugin') {
                 script {
-                    bat 'echo y | npm install sfdx-git-delta@latest-rc'
-                }*/
+                    bat 'echo y | rc = command "${toolbelt}/sfdx plugins:install sfdx-git-delta --force"'
+                    if (rc != 0) {
+                        error 'Install plugin failed.'
+                    }
+                }
             } 
 
             // -------------------------------------------------------------------------
