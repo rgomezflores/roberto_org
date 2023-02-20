@@ -132,12 +132,6 @@ node {
                 if (rc != 0) {
                     error 'Salesforce check version failed.'
                 }
-            
-                rc1 = command "${toolbelt}/sfdx plugins"
-                if (rc1 != 0) {
-                    error 'Salesforce check version failed.'
-                }
-
             }
 
             // -------------------------------------------------------------------------
