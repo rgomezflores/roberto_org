@@ -127,8 +127,10 @@ node {
                 // input message: 'Continue installation? (y/N)', ok: 'y'
     
             stage('Install SGD Plugin') {
-                command "${toolbelt}/sfdx plugins:install sfdx-git-delta" | echo "y"
-                // echo "y" | command "${toolbelt}/sfdx plugins:install sfpowerkit"
+                command "${toolbelt}/sfdx plugins:install sfdx-git-delta"
+                echo "y"
+                command "${toolbelt}/sfdx plugins:install sfpowerkit"
+                echo "y"
                 command "${toolbelt}/sfdx plugins"
             }
 
