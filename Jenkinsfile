@@ -13,8 +13,6 @@ node {
     def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://login.salesforce.com"
 
     def toolbelt = tool 'toolbelt'
-    // def sfdx = tool 'sfdx'
-    // def sgd = tool 'sgd'
 
     // -------------------------------------------------------------------------
     // Parameters SHAs
@@ -64,7 +62,6 @@ node {
         checkout scm
     }
 
-
     // -------------------------------------------------------------------------
     // Run all the enclosed stages with access to the Salesforce
     // JWT key credentials.
@@ -85,7 +82,6 @@ node {
                 }
             }
 
-
             // -------------------------------------------------------------------------
             // Install Salesforce CLI
             // -------------------------------------------------------------------------
@@ -101,11 +97,10 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Verify SFDX CLI Installation') {
-                bat "\"sfdx\" --version"
-                // rc = command "${toolbelt}/sfdx version"
-                // if (rc != 0) {
-                //     error 'Salesforce check version failed.'
-                // }
+                rc = command "${toolbelt}/sfdx version"
+                if (rc != 0) {
+                    error 'Salesforce check version failed.'
+                }
             }
 
             // -------------------------------------------------------------------------
@@ -132,7 +127,7 @@ node {
                 // input message: 'Continue installation? (y/N)', ok: 'y'
     
              stage('Install SGD Plugin') {
-                rc = command "${toolbelt}/sfdx plugins:install sfdx-git-delta"
+                rc = echo 'y' command "${toolbelt}/sfdx plugins:install sfdx-git-delta"
                 if (rc != 0) {
                     error 'Salesforce check version failed.'
                 }
