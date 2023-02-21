@@ -45,6 +45,9 @@ pipeline {
 
         stage('Create Delta Packages') {
             steps {
+                // Authenticate with the org
+                bat 'sfdx force:auth:jwt:grant -u rgomezflores@deloitte.com -f C:/Users/rgomezflores/Documents/RGF/.ssh/ -i id_rsa  --setdefaultdevhubusername'
+                // Create the delta package
                 bat '"C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output "./DeltaPackage" --generate-delta'
             }
         }
