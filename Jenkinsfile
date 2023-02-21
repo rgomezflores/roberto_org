@@ -10,7 +10,7 @@ pipeline {
         )
         booleanParam(name: 'CheckOnly',
             description: '''Do you require to execute only validation?
-            !!IMPORTANT NOTE¡¡ 
+            !!IMPORTANT NOTE!! 
             If you do not select this option, you are acceptin to execute the deployment!!
             '''
         )
@@ -95,7 +95,7 @@ pipeline {
             steps {
                 script {
                     if (params.CheckOnly == 'true') {
-                        if (params.TestClasses == 'true') {
+                        else if (params.TestClasses == 'true') {
                             echo "You will execute a Validation with TestClasses"
                         } else {
                             echo "You will execute a Validation without TestClasses"
