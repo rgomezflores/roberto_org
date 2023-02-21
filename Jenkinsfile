@@ -97,7 +97,7 @@ pipeline {
         stage('Execute Deployment in QA') {
             when {
                 expression {
-                    return params.CheckOnly == 'true';
+                    return params.CheckOnly
                 }
             }
             steps {
