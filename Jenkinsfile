@@ -27,8 +27,7 @@ pipeline {
 
         stage('Authenticate to Salesforce') {
             steps {
-                bat '"%SFDX%"/sfdx force:auth:web:login -a roberto_org'
-                // bat '"%SFDX%"/sfdx force:auth:web:login -u rgomezflores@deloitte.com -p Abcd3fgh!.00'
+                bat '"%SFDX%"/sfdx force:auth:web:login -r https://login.salesforce.com -a roberto_org -u rgomezflores@deloitte.com -p Abcd3fgh!.00'
             }
         }
         // stage('Deploy') {
