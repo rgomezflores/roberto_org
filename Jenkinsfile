@@ -12,11 +12,14 @@ pipeline {
         }
         stage('Install Salesforce CLI') {
             steps {
-                withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
-                    bat 'npm install -g sfdx-cli'
-                    bat 'set PATH=%PATH%;C:\\Program Files\\sfdx\\bin'
-                    bat 'sfdx --version'
-                }
+                bat '''
+                    @echo off
+                    echo Installing Salesforce CLI...
+                    curl https://developer.salesforce.com/media/salesforce-cli/sfdx-windows-latest.zip --output sfdx.zip
+                    powershell Expand-Archive -Path sfdx.zip -DestinationPath "%Program Files%/sfdx"
+                    setx PATH "%PATH%;%Program Files%/sfdx/bin"
+                    echo Salesforce CLI installed successfully.
+                '''
             }
         }
 
