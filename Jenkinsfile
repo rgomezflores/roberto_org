@@ -92,17 +92,26 @@ pipeline {
         }
 
         stage('Execute Deployment in QA') {
-            steps {
-                script {
-                    if (params.CheckOnly == 'true') {
-                        echo 'You will execute a Validation without TestClasses'
-                    }   else if (params.TestClasses == 'true') {
-                            echo 'You will execute a Deployment with TestClasses'
-                    }   else {
-                            echo 'NAA You will execute a Deployment withoy TestClasses'
-                    }
+            when {
+                expression {
+                    params.CheckOnly == 'true'
                 }
+            steps {
+                echo 'You will execute a Validation without TestClasses'
             }
+
+
+            // steps {
+            //     script {
+            //         if (params.CheckOnly == 'true') {
+            //             echo 'You will execute a Validation without TestClasses'
+            //         }   else if (params.TestClasses == 'true') {
+            //                 echo 'You will execute a Deployment with TestClasses'
+            //         }   else {
+            //                 echo 'NAA You will execute a Deployment withoy TestClasses'
+            //         }
+            //     }
+            // }
         }
     }
 }
