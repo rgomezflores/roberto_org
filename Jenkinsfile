@@ -30,14 +30,9 @@ pipeline {
             steps {
                 script {
                     bat 'echo y | "C:/Program Files/sfdx/bin/"sfdx plugins:install sfdx-git-delta -v'
-
-                    '"%SFDX%"/sfdx plugins:install sfdx-git-delta -v && echo y'
                 }
                 bat '"%SFDX%"/sfdx plugins'
             }
-            // steps {
-            //     bat 'echo y' | bat '"%SFDX%"/sfdx plugins:install sfdx-git-delta'
-            // }
         }
 
         // stage('Authenticate to Salesforce') {
