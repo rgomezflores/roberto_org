@@ -114,7 +114,7 @@ pipeline {
 
         stage('Execute Deployment in QA:TestClasses') {
             when {
-                expression expression {params.CheckOnly == 'false' && params.TestClasses == 'true'}
+                expression {params.CheckOnly == 'false' && params.TestClasses == 'true'}
                 }
             steps {
                 echo 'You will execute a Deployment with TestClasses'
