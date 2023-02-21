@@ -25,9 +25,14 @@ pipeline {
             }
         }
 
+        stage('Install SGD Plugin') {
+            steps {
+                bat 'echo y | "%SFDX%"/sfdx plugins:install sfdx-git-delta'
+
+
         stage('Authenticate to Salesforce') {
             steps {
-                bat '"%SFDX%"/sfdx force:auth:web:login -r https://login.salesforce.com -a roberto_org -u rgomezflores@deloitte.com -p Abcd3fgh!.00'
+                bat '"%SFDX%"/sfdx force:auth:web:login -r https://login.salesforce.com -a roberto_org'
             }
         }
         // stage('Deploy') {
