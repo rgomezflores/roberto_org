@@ -94,8 +94,8 @@ pipeline {
         stage('Execute Deployment in QA') {
             steps {
                 script {
-                    if (params.CheckOnly == 'true') {
-                        else if (params.TestClasses == 'true') {
+                    if (params.CheckOnly ('true')) {
+                        if (params.TestClasses ('true')) {
                             echo "You will execute a Validation with TestClasses"
                         } else {
                             echo "You will execute a Validation without TestClasses"
