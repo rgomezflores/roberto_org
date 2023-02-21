@@ -108,6 +108,8 @@ pipeline {
                     }   
                     else if (env1 == 'true' && env2 == 'false') {
                            echo 'You will execute a Validation without TestClasses'
+                           bat '"C:/Program Files/sfdx/bin/"sfdx force:source:deploy -c -p C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage -u rgomezflores@deloitte.com -w 50 --verbose'
+
                     }  
                     else if (env1 == 'false' && env2 == 'true') {
                            echo 'You will execute a Deployment with TestClasses'
