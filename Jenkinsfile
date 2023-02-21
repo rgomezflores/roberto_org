@@ -33,9 +33,11 @@ pipeline {
                 }
                 bat '"%SFDX%"/sfdx plugins'
 
+                bat '''
                 command "%SFDX%/sfdx plugins:install sfdx-git-delta"
                 echo "y"
-                bat '"%SFDX%"/sfdx plugins'
+                '"%SFDX%"/sfdx plugins
+                '''
             }
             // steps {
             //     bat 'echo y' | bat '"%SFDX%"/sfdx plugins:install sfdx-git-delta'
