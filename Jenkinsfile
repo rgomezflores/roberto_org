@@ -103,7 +103,7 @@ pipeline {
                 script {
                     def env1 = params.CheckOnly
                     def env2 = params.TestClasses
-                    if (env1 == 'true') {
+                    if (env1 != 'true') {
                         echo 'You will execute a Validation without TestClasses'
                     }   
                     // else if (env2 == 'true') {
