@@ -95,13 +95,11 @@ pipeline {
             steps {
                 script {
                     if (params.CheckOnly == 'true') {
-                        if (params.TestClasses == 'true') {
-                            echo "You will execute a Validation with TestClasses"
-                        } else {
-                            echo "You will execute a Validation without TestClasses"
-                        }
-                    } else {
-                        echo "You will execute a Deployment with TestClasses"
+                        echo 'You will execute a Validation without TestClasses'
+                    }   else if (params.TestClasses == 'true') {
+                            echo 'You will execute a Deployment with TestClasses'
+                    }   else {
+                            echo 'NAA You will execute a Deployment withoy TestClasses'
                     }
                 }
             }
