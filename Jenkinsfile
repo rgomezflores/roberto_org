@@ -108,7 +108,7 @@ pipeline {
                     def env2 = params.TestClasses
 
                     echo "${env1}"
-                    echo "${env}"
+                    echo "${env2}"
 
                     if (env1 != 'true' || env2 != 'true') {
                         echo 'You will execute a Validation with TestClasses'
