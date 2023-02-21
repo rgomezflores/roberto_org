@@ -97,8 +97,8 @@ pipeline {
         stage('Execute Deployment in QA') {
             steps {
                 script {
-                    def env1 = params.CheckOnly
-                    def env2 = params.TestClasses
+                    def env1 = "${params.CheckOnly}"
+                    def env2 = "${params.TestClasses}"
 
                     echo "${env1}"
                     echo "${env2}"
