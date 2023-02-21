@@ -110,13 +110,13 @@ pipeline {
                     if (env1 != 'true' && env2 != 'true') {
                         echo 'You will execute a Validation with TestClasses'
                     }   
-                    else if (env1 != 'true' && env2 != 'false') {
+                    else if (env1 != 'true' && env2 == 'true') {
                            echo 'You will execute a Validation without TestClasses'
                     }  
-                    else if (env1 != 'false' && env2 != 'true') {
+                    else if (env1 == 'true' && env2 != 'true') {
                            echo 'You will execute a Deployment with TestClasses'
                     }
-                    else if (env1 != 'false' && env2 != 'false') {
+                    else if (env1 == 'true' && env2 == 'true') {
                            echo 'You will execute a Deployment without TestClasses'
                     } 
                     else {
