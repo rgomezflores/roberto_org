@@ -95,38 +95,46 @@ pipeline {
         }
 
         stage('Execute Deployment in QA') {
-            // when {
-            //     expression { params.CheckOnly == 'true'}
-            // }
-            // steps {
-            //     echo 'You will execute a Validation without TestClasses'
-            // }
-            
-            steps {
-                script {
-                    def env1 = params.CheckOnly
-                    def env2 = params.TestClasses
 
-                    echo "${env1}"
-                    echo "${env2}"
+            def env1 = params.CheckOnly
+            def env2 = params.TestClasses
 
-                    if (env1 != 'true' || env2 != 'true') {
-                        echo 'You will execute a Validation with TestClasses'
-                    }   
-                    else if (env1 != 'true' || env2 == 'true') {
-                           echo 'You will execute a Validation without TestClasses'
-                    }  
-                    else if (env1 == 'true' && env2 != 'true') {
-                           echo 'You will execute a Deployment with TestClasses'
-                    }
-                    else if (env1 == 'true' && env2 == 'true') {
-                           echo 'You will execute a Deployment without TestClasses'
-                    } 
-                    else {
-                            echo 'ERROR SELECTIONS'
-                    }
-                }
+            echo "${env1}"
+            echo "${env2}"
+
+            when {
+                env1 "true"
             }
+            steps {
+                echo 'You will execute a Validation without TestClasses'
+            }
+            
+            
+            // steps {
+            //     script {
+            //         def env1 = params.CheckOnly
+            //         def env2 = params.TestClasses
+
+            //         echo "${env1}"
+            //         echo "${env2}"
+
+            //         if (env1 == 'true' && env2 == 'true') {
+            //             echo 'You will execute a Validation with TestClasses'
+            //         }   
+            //         else if (env1 == 'true' && env2 == 'false') {
+            //                echo 'You will execute a Validation without TestClasses'
+            //         }  
+            //         else if (env1 == 'false' && env2 == 'true') {
+            //                echo 'You will execute a Deployment with TestClasses'
+            //         }
+            //         else if (env1 == 'false' && env2 == 'false') {
+            //                echo 'You will execute a Deployment without TestClasses'
+            //         } 
+            //         else {
+            //                 echo 'ERROR SELECTIONS'
+            //         }
+            //     }
+            // }
         }
     }
 }
