@@ -14,7 +14,7 @@ pipeline {
             steps {
                 bat '''
                     setx PATH "%SFDX1%;C:\\Program Files\\sfdx\\bin"
-                    "%SFDX1%/sfdx --version"
+                    "%SFDX1%"/sfdx --version
                 '''
             }
         }
