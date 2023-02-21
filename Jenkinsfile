@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Install Salesforce CLI') {
             steps {
-                npm install -g sfdx-cli
+                bat 'npm install -g sfdx-cli'
                 bat 'set PATH=%PATH%;C:\\Program Files\\sfdx\\bin'
                 bat 'sfdx --version'
             }
