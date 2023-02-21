@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     echo "y"
-                    bat '"%SFDX%"/sfdx plugins:install sfdx-git-delta && echo "y"'
+                    "%SFDX%"/sfdx plugins:install sfdx-git-delta
                 }
             }
                 // bat '"%SFDX%"/sfdx plugins:install sfdx-git-delta && echo "y"'
