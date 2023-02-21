@@ -47,7 +47,8 @@ pipeline {
         stage('Create Delta Packages') {
             steps {
                 // Authenticate with the org
-                bat '"C:/Program Files/sfdx/bin/"sfdx force:auth:jwt:grant --instanceurl "https://login.salesforce.com" --clientid "3MVG9ux34Ig8G5eqaSrg9EsUR6AjGT27GketsoLUx3Gt4lX2lMQuSRqVgdI_lN_8ljjohKh4Rl61wwY8IdXZk" --username "rgomezflores@deloitte.com" --jwtkeyfile "c3fc289a-7184-482a-aa29-be9d34d6a272" --setdefaultdevhubusername'
+                // bat '"C:/Program Files/sfdx/bin/"sfdx force:auth:jwt:grant --instanceurl "https://login.salesforce.com" --clientid "3MVG9ux34Ig8G5eqaSrg9EsUR6AjGT27GketsoLUx3Gt4lX2lMQuSRqVgdI_lN_8ljjohKh4Rl61wwY8IdXZk" --username "rgomezflores@deloitte.com" --jwtkeyfile "c3fc289a-7184-482a-aa29-be9d34d6a272" --setdefaultdevhubusername'
+                bat '"C:/Program Files/sfdx/bin/"sfdx force:auth:jwt:grant -u "rgomezflores@deloitte.com" -i "c3fc289a-7184-482a-aa29-be9d34d6a272" --setdefaultdevhubusername'
                 // Create the delta package
                 bat '"C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to "a6a3d70e5cfe800554b27b9aaf45b0dff72fdbe8" --from "587a48df7517a110cb4c382845859f9baaee6715" --output "C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage/" --generate-delta'
 
