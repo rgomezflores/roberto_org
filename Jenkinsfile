@@ -45,7 +45,7 @@ pipeline {
 
         stage('Create Delta Packages') {
             steps {
-                bat '"%SFDX%"/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta'
+                bat '"C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output "./DeltaPackage" --generate-delta'
             }
         }
 
