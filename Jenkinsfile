@@ -96,12 +96,27 @@ pipeline {
 
         stage('Execute Deployment in QA') {
             when {
-                expression {
-                    return params.CheckOnly
+                allOf {
+                    expression {return params.CheckOnly}
+                    expression {return params.TestClasses}
                 }
             }
             steps {
+                echo 'You will execute a Validation with TestClasses'
+            }
+
+            when {
+                expression {return params.CheckOnly}
+                }
+            steps {
                 echo 'You will execute a Validation without TestClasses'
+            }
+
+            when {
+                expression {return params.TestClasses}
+                }
+            steps {
+                echo 'You will execute a Deployment with TestClasses'
             }
 
             
