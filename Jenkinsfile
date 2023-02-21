@@ -2,16 +2,15 @@ pipeline {
     agent any
     
     parameters {
-        string(
-            description: 'Use the SHA considered the Start Commit for your Delta Package', 
-            name: 'StartCommit'), 
-        string(
+        string(name: 'StartCommit', 
+            description: 'Use the SHA considered the Start Commit for your Delta Package' 
+        )
+        string(name: 'EndCommit',
             description: 'Use the SHA considered the End Commit for your Delta Package', 
-            name: 'EndCommit'),
-        extendedChoice(
+        )
+        extendedChoice(name: 'Validation_Deployment',
             description: 'Select your best option',  
             multiSelectDelimiter: 'A,B,C,D', 
-            name: 'Validation_Deployment', 
             quoteValue: true, 
             saveJSONParameterToFile: false, 
             type: 'PT_MULTI_SELECT', 
