@@ -94,61 +94,61 @@ pipeline {
             }
         }
 
-        stage('Execute Deployment in QA: Validation & TestClasses') {
-            when {
-                expression {params.CheckOnly == 'true' && params.TestClasses == 'true'}
-            }
+        stage('Execute Deployment in QA') {
             steps {
-                echo 'You will execute a Validation with TestClasses'
-            }
-        }
+                script {
+                    def env1 = params.CheckOnly
+                    def env2 = params.TestClasses
 
-        stage('Execute Deployment in QA: Validation only') {
-            when {
-                expression {params.CheckOnly == 'true' && params.TestClasses == 'false'}
-                }
-            steps {
-                echo 'You will execute a Validation without TestClasses'
-            }
-        }
+                    echo "${env1}"
+                    echo "${env2}"
 
-        stage('Execute Deployment in QA:TestClasses') {
-            when {
-                expression {params.CheckOnly == 'false' && params.TestClasses == 'true'}
+                    if (env1 == 'true' && env2 == 'true') {
+                        echo 'You will execute a Validation with TestClasses'
+                    }   
+                    else if (env1 == 'true' && env2 == 'false') {
+                           echo 'You will execute a Validation without TestClasses'
+                    }  
+                    else if (env1 == 'false' && env2 == 'true') {
+                           echo 'You will execute a Deployment with TestClasses'
+                    }
+                    else if (env1 == 'false' && env2 == 'false') {
+                           echo 'You will execute a Deployment without TestClasses'
+                    } 
+                    else {
+                            echo 'ERROR SELECTIONS'
+                    }
                 }
-            steps {
-                echo 'You will execute a Deployment with TestClasses'
             }
         }
     }
 }
 
-            
-            // steps {
-            //     script {
-            //         def env1 = params.CheckOnly
-            //         def env2 = params.TestClasses
 
-            //         echo "${env1}"
-            //         echo "${env2}"
+//             when {
+//                 expression {params.CheckOnly == 'true' && params.TestClasses == 'true'}
+//             }
+//             steps {
+//                 echo 'You will execute a Validation with TestClasses'
+//             }
+//         }
 
-            //         if (env1 == 'true' && env2 == 'true') {
-            //             echo 'You will execute a Validation with TestClasses'
-            //         }   
-            //         else if (env1 == 'true' && env2 == 'false') {
-            //                echo 'You will execute a Validation without TestClasses'
-            //         }  
-            //         else if (env1 == 'false' && env2 == 'true') {
-            //                echo 'You will execute a Deployment with TestClasses'
-            //         }
-            //         else if (env1 == 'false' && env2 == 'false') {
-            //                echo 'You will execute a Deployment without TestClasses'
-            //         } 
-            //         else {
-            //                 echo 'ERROR SELECTIONS'
-            //         }
-            //     }
-            // }
+//         stage('Execute Deployment in QA: Validation only') {
+//             when {
+//                 expression {params.CheckOnly == 'true' && params.TestClasses == 'false'}
+//                 }
+//             steps {
+//                 echo 'You will execute a Validation without TestClasses'
+//             }
+//         }
+
+//         stage('Execute Deployment in QA:TestClasses') {
+//             when {
+//                 expression {params.CheckOnly == 'false' && params.TestClasses == 'true'}
+//                 }
+//             steps {
+//                 echo 'You will execute a Deployment with TestClasses'
+//             }
 //         }
 //     }
 // }
