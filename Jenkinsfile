@@ -1,7 +1,7 @@
 pipeline {
     agent any
     
-    parameters([
+    parameters {
         string(
             description: 'Use the SHA considered the Start Commit for your Delta Package', 
             name: 'StartCommit'), 
@@ -18,7 +18,7 @@ pipeline {
             value: '"ValueA","ValueB","ValueC","ValueD"', 
             visibleItemCount: 4
         )
-    ])
+    }
 
     stages {
         stage('Checkout') {
