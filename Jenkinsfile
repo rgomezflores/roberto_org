@@ -26,9 +26,8 @@ pipeline {
         }
 
         stage('Install SGD Plugin') {
-            steps {
-                echo "y"
-                "%SFDX%"/echo y | sfdx plugins:install sfdx-git-delta
+            echo "y"
+            "%SFDX%"/echo y | sfdx plugins:install sfdx-git-delta
         }
 
 
