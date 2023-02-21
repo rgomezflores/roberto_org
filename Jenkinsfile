@@ -26,10 +26,8 @@ pipeline {
         }
 
         stage('Authenticate to Salesforce') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'c3fc289a-7184-482a-aa29-be9d34d6a272')]) {
-                    bat '"%SFDX%"/sfdx force:auth:web:login -u rgomezflores@deloitte.com -p Abcd3fgh!.00'
-                }
+            steps { {
+                bat '"%SFDX%"/sfdx force:auth:web:login -u rgomezflores@deloitte.com -p Abcd3fgh!.00'
             }
         }
         // stage('Deploy') {
