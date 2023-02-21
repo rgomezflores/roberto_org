@@ -35,6 +35,21 @@ pipeline {
             }
         }
 
+        stage('Create Directory') {
+            steps {
+                dir ('DeltaPackage') {
+                    writeFile file:'.ignore', text:''
+                }
+            }
+        }
+
+        stage('Create Delta Packages') {
+            steps {
+                bat '"%SFDX%"/sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output ./DeltaPackage --generate-delta"'
+            }
+        }
+
+        
         // stage('Authenticate to Salesforce') {
         //     steps {
         //         bat '"%SFDX%"/sfdx force:auth:web:login -r https://login.salesforce.com -a roberto_org'
