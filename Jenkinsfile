@@ -89,8 +89,8 @@ pipeline {
                     // Authenticate with the org
                     bat '"C:/Program Files/sfdx/bin/"sfdx force:auth:jwt:grant --clientid 3MVG9ux34Ig8G5eqaSrg9EsUR6AjGT27GketsoLUx3Gt4lX2lMQuSRqVgdI_lN_8ljjohKh4Rl61wwY8IdXZk --jwtkeyfile C:/Users/rgomezflores/Documents/RGF/TMNA/JWT/server.key --username rgomezflores@deloitte.com --instanceurl https://login.salesforce.com --setdefaultdevhubusername'
                     // Create the delta package
-                    bat '"C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to "a6a3d70e5cfe800554b27b9aaf45b0dff72fdbe8" --from "587a48df7517a110cb4c382845859f9baaee6715" --output "C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage/" --generate-delta'
-                    // bat '"C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to ${params.EndCommit} --from ${params.StartCommit} --output "C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage/" --generate-delta'
+                    // bat '"C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to "a6a3d70e5cfe800554b27b9aaf45b0dff72fdbe8" --from "587a48df7517a110cb4c382845859f9baaee6715" --output "C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage/" --generate-delta'
+                    bat """"C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to ${params.EndCommit} --from ${params.StartCommit} --output "C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage/" --generate-delta"""
                 }
             }
         }
@@ -107,7 +107,10 @@ pipeline {
                     echo "${env3}"
 
                     if (env1 == 'true' && env2 == 'true') {
+                        bat """
                         echo 'You will execute a Validation with TestClasses'
+                        "C:/Program Files/sfdx/bin/"sfdx force:source:deploy -c -p C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage -u rgomezflores@deloitte.com -w 50 --testlevel RunSpecifiedTests --runtests ${env3} --verbose
+                        """
                     }   
                     else if (env1 == 'true' && env2 == 'false') {
                         bat """
@@ -122,10 +125,13 @@ pipeline {
                         """
                     }
                     else if (env1 == 'false' && env2 == 'false') {
-                           echo 'You will execute a Deployment without TestClasses'
+                        bat """
+                        echo 'You will execute a Deployment without TestClasses'
+                        "C:/Program Files/sfdx/bin/"sfdx force:source:deploy -p C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage -u rgomezflores@deloitte.com -w 50 --verbose
+                        """
                     } 
                     else {
-                            echo 'ERROR SELECTIONS'
+                        echo 'ERROR SELECTIONS'
                     }
                 }
             }
