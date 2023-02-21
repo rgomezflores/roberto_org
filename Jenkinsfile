@@ -105,9 +105,11 @@ pipeline {
                     def env2 = params.TestClasses
                     if (env1 == 'true') {
                         echo 'You will execute a Validation without TestClasses'
-                    }   else if (env2 == 'true') {
-                            echo 'You will execute a Deployment with TestClasses'
-                    }   else {
+                    }   
+                    // else if (env2 == 'true') {
+                    //         echo 'You will execute a Deployment with TestClasses'
+                    // }   
+                    else {
                             echo 'NAA You will execute a Deployment withoy TestClasses'
                     }
                 }
