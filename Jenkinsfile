@@ -9,13 +9,19 @@ pipeline {
             description: 'Use the SHA considered the End Commit for your Delta Package', 
         )
         booleanParam(name: 'CheckOnly',
-            description: 'Do you require to execute only validation?'
+            description: '''Do you require to execute only validation?
+            !!IMPORTANT NOTE¡¡ 
+            If you do not select this option, you are acceptin to execute the deployment!!
+            '''
         )
         booleanParam(name: 'TestClasses',
         description: 'Do you require your execution includes Test Classes?'
         )
         string(name: 'TestClasses_definition',
-            description: 'Define the Classes (multiple test classes must be seperated by commas)', 
+            description: '''Define the Classes that you will be using in your deployment.
+            - Multiple test classes must be seperated by commas.
+            - Do not use spaces.
+            ''' 
         )
     }
 
@@ -81,6 +87,22 @@ pipeline {
                     // Create the delta package
                     bat '"C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to "a6a3d70e5cfe800554b27b9aaf45b0dff72fdbe8" --from "587a48df7517a110cb4c382845859f9baaee6715" --output "C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage/" --generate-delta'
                     // bat '"C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to ${params.EndCommit} --from ${params.StartCommit} --output "C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage/" --generate-delta'
+                }
+            }
+        }
+
+        stage('Execute Deployment in QA') {
+            steps {
+                script {
+                    if (params.CheckOnly == 'true') {
+                        if (params.TestClasses == 'true') {
+                            echo "You will execute a Validation with TestClasses"
+                        } else {
+                            echo "You will execute a Validation without TestClasses"
+                        }
+                    } else {
+                        echo "You will execute a Deployment with TestClasses"
+                    }
                 }
             }
         }
