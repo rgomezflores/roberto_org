@@ -28,13 +28,8 @@ pipeline {
         stage('Install SGD Plugin') {
             steps {
                 script {
-                    def userInput = input message: 'Continue installation? (y/N)', parameters: [booleanParam(defaultValue: false, description: '', name: 'Yes')]
-                    if (userInput.Yes) {
-                        bat '"%SFDX%"/sfdx plugins:install sfdx-git-delta'
-                    } 
-                    else {
-                        error 'User did not confirm installation'
-                    }
+                    echo "y"
+                    bat '"%SFDX%"/sfdx plugins:install sfdx-git-delta'
                 }
             }
                 // bat '"%SFDX%"/sfdx plugins:install sfdx-git-delta && echo "y"'
