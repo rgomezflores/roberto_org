@@ -13,8 +13,8 @@ pipeline {
         stage('Install Salesforce CLI') {
             steps {
                 bat '''
-                    setx PATH "%SFDX1%;C:\\Program Files\\sfdx\\bin"
-                    "%SFDX1%"/sfdx --version
+                    setx PATH "%PATH%;C:\\Program Files\\sfdx\\bin"
+                    "%SFDX%/sfdx --version"
                 '''
             }
         }
