@@ -29,7 +29,7 @@ pipeline {
         stage('Install SGD Plugin') {
             steps {
                 script {
-                    'echo y | "%SFDX%"/sfdx plugins:install sfdx-git-delta | echo y'
+                    "%SFDX%"/sfdx plugins:install sfdx-git-delta -v | echo y
                 }
                 bat '"%SFDX%"/sfdx plugins'
             }
@@ -37,7 +37,6 @@ pipeline {
             //     bat 'echo y' | bat '"%SFDX%"/sfdx plugins:install sfdx-git-delta'
             // }
         }
-
 
         // stage('Authenticate to Salesforce') {
         //     steps {
