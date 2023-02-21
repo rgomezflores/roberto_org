@@ -37,6 +37,7 @@ pipeline {
 
         stage('Create Directory') {
             steps {
+                bat 'cd C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/'
                 dir ('DeltaPackage') {
                     writeFile file:'.ignore', text:''
                 }
@@ -48,7 +49,9 @@ pipeline {
                 // Authenticate with the org
                 bat 'sfdx force:auth:jwt:grant -u rgomezflores@deloitte.com -f C:/Users/rgomezflores/Documents/RGF/.ssh/ -i id_rsa  --setdefaultdevhubusername'
                 // Create the delta package
-                bat '"C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output "./DeltaPackage" --generate-delta'
+                bat '"C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to "a6a3d70e5cfe800554b27b9aaf45b0dff72fdbe8" --from "587a48df7517a110cb4c382845859f9baaee6715" --output "C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage/" --generate-delta'
+
+                // bat '"C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output "./DeltaPackage" --generate-delta'
             }
         }
 
