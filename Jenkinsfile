@@ -8,20 +8,14 @@ pipeline {
         string(name: 'EndCommit',
             description: 'Use the SHA considered the End Commit for your Delta Package', 
         )
-        extendedChoice(name: 'Validation_Deployment',
-            description: 'Select your best option',  
-            multiSelectDelimiter: 'A,B,C,D', 
-            quoteValue: true, 
-            saveJSONParameterToFile: false, 
-            type: 'PT_MULTI_SELECT', 
-            value: '"ValueA","ValueB","ValueC","ValueD"', 
-            visibleItemCount: 4
-        )
         booleanParam(name: 'CheckOnly',
             description: 'Do you require to execute only validation?'
         )
         booleanParam(name: 'TestClasses',
         description: 'Do you require your execution includes Test Classes?'
+        )
+        string(name: 'TestClasses_definition',
+            description: 'Define the Classes (multiple test classes must be seperated by commas)', 
         )
     }
 
@@ -85,7 +79,7 @@ pipeline {
                 bat '"C:/Program Files/sfdx/bin/"sfdx force:auth:jwt:grant --clientid 3MVG9ux34Ig8G5eqaSrg9EsUR6AjGT27GketsoLUx3Gt4lX2lMQuSRqVgdI_lN_8ljjohKh4Rl61wwY8IdXZk --jwtkeyfile C:/Users/rgomezflores/Documents/RGF/TMNA/JWT/server.key --username rgomezflores@deloitte.com --instanceurl https://login.salesforce.com --setdefaultdevhubusername'
                 // Create the delta package
                 // bat '"C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to "a6a3d70e5cfe800554b27b9aaf45b0dff72fdbe8" --from "587a48df7517a110cb4c382845859f9baaee6715" --output "C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage/" --generate-delta'
-                "C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to $(params.EndCommit) --from $(params.StartCommit) --output "C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage/" --generate-delta"
+                bat '"C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to ${params.EndCommit} --from ${params.StartCommit} --output "C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage/" --generate-delta'
             }
         }
 
