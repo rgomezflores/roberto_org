@@ -22,17 +22,13 @@ pipeline {
         stage('Check Salesforce CLI Installation') {
             steps {
                 bat '"%SFDX%"/sfdx --version'
+                bat '"%SFDX%"/sfdx plugins'
             }
         }
 
         stage('Install SGD Plugin') {
             steps {
-                script {
-                    echo "y"
-                    "%SFDX%"/sfdx plugins:install sfdx-git-delta
-                }
-            }
-                // bat '"%SFDX%"/sfdx plugins:install sfdx-git-delta && echo "y"'
+                bat '"%SFDX%"/sfdx plugins:install sfdx-git-delta'
         }
 
 
