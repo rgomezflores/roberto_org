@@ -77,8 +77,9 @@ pipeline {
                 echo "You defined this Start Commit: ${params.StartCommit}"
                 echo "You defined this End Commit: ${params.EndCommit}"
                 echo "You defined this Validation: ${params.Validation_Deployment}"
-                echo "You selected this option for Check: ${params.CheckOnly}"
-                echo "You selected this option for TestClasses: ${params.TestClasses}"
+                echo "Check option is: ${params.CheckOnly}"
+                echo "TestClasses option is: ${params.TestClasses}"
+                echo "You defined these TestClasses: ${params.TestClasses_definition}"
             }
         }
 
@@ -99,9 +100,11 @@ pipeline {
                 script {
                     def env1 = "${params.CheckOnly}"
                     def env2 = "${params.TestClasses}"
+                    def env3 = "${params.TestClasses_definition}"
 
                     echo "${env1}"
                     echo "${env2}"
+                    echo "${env3}"
 
                     if (env1 == 'true' && env2 == 'true') {
                         echo 'You will execute a Validation with TestClasses'
@@ -113,6 +116,7 @@ pipeline {
                     }  
                     else if (env1 == 'false' && env2 == 'true') {
                            echo 'You will execute a Deployment with TestClasses'
+                           bat '"C:/Program Files/sfdx/bin/"sfdx force:source:deploy -p C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage -u rgomezflores@deloitte.com -w 50--testlevel RunSpecifiedTests --runtests ${env3} --verbose'
                     }
                     else if (env1 == 'false' && env2 == 'false') {
                            echo 'You will execute a Deployment without TestClasses'
