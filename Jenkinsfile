@@ -17,6 +17,12 @@ pipeline {
             value: '"ValueA","ValueB","ValueC","ValueD"', 
             visibleItemCount: 4
         )
+        booleanParam(name: 'CheckOnly',
+            description: 'Do you require to execute only validation?'
+        )
+        booleanParam(name: 'TestClasses',
+        description: 'Do you require your execution includes Test Classes?'
+        )
     }
 
     stages {
@@ -68,6 +74,8 @@ pipeline {
                 echo "You defined this Start Commit: ${params.StartCommit}"
                 echo "You defined this End Commit: ${params.EndCommit}"
                 echo "You defined this Validation: ${params.Validation_Deployment}"
+                echo "You selected this option for Check: ${params.CheckOnly}"
+                echo "You selected this option for TestClasses: ${params.TestClasses}"
             }
         }
 
