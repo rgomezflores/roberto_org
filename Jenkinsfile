@@ -95,20 +95,15 @@ pipeline {
         }
 
         stage('Execute Deployment in QA') {
-
-            def env1 = params.CheckOnly
-            def env2 = params.TestClasses
-
-            echo "${env1}"
-            echo "${env2}"
-
             when {
-                env1 "true"
+                expression {
+                    return params.CheckOnly == 'true';
+                }
             }
             steps {
                 echo 'You will execute a Validation without TestClasses'
             }
-            
+
             
             // steps {
             //     script {
