@@ -26,7 +26,7 @@ pipeline {
         }
 
         stage('Authenticate to Salesforce') {
-            steps { {
+            steps {
                 bat '"%SFDX%"/sfdx force:auth:web:login -u rgomezflores@deloitte.com -p Abcd3fgh!.00'
             }
         }
