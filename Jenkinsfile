@@ -64,10 +64,12 @@ pipeline {
         }
 
         stage('Parameters Values') {
-            echo "You defined this Start Commit: ${params.StartCommit}"
-            echo "You defined this End Commit: ${params.EndCommit}"
-            echo "You defined this Validation: ${params.Validation_Deployment}"
+            steps {
+                echo "You defined this Start Commit: ${params.StartCommit}"
+                echo "You defined this End Commit: ${params.EndCommit}"
+                echo "You defined this Validation: ${params.Validation_Deployment}"
             }
+        }
 
         stage('Create Delta Packages') {
             steps {
