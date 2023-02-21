@@ -96,11 +96,11 @@ pipeline {
                 expression {
                     params.CheckOnly == 'true'
                 }
-                 steps {
-                    echo 'You will execute a Validation without TestClasses'
-                }
             }
-
+            steps {
+                echo 'You will execute a Validation without TestClasses'
+            }
+            
             // steps {
             //     script {
             //         if (params.CheckOnly == 'true') {
