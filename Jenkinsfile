@@ -10,18 +10,18 @@ pipeline {
         )
         booleanParam(name: 'CheckOnly',
             description: '''Do you require to execute only validation?
-            !!IMPORTANT NOTE!! 
-            If you do not select this option, you are acceptin to execute the deployment!!
-            '''
+!!IMPORTANT NOTE!! 
+If you do not select this option, you are acceptin to execute the deployment!!
+'''
         )
         booleanParam(name: 'TestClasses',
         description: 'Do you require your execution includes Test Classes?'
         )
         string(name: 'TestClasses_definition',
             description: '''Define the Classes that you will be using in your deployment.
-            - Multiple test classes must be seperated by commas.
-            - Do not use spaces.
-            ''' 
+- Multiple test classes must be seperated by commas.
+- Do not use spaces.
+''' 
         )
     }
 
