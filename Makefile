@@ -12,7 +12,7 @@ checkout:
 	git clone --branch $(BRANCH) $(REPO_URL) $(LOCAL_DIR)
 
 installsfdxcli:
-    @echo 'y' | npm install sfdx-cli --global
+    @echo "y" | npm install sfdx-cli --global
     @echo "Successully installed sfdx-cli"
     sfdx version
 
