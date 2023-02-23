@@ -43,6 +43,10 @@ deploy:
     do echo 'You will execute a Validation with TestClasses'	
     sfdx force:source:deploy \
     --checkonly \
-    --sourcepath=$(APP_PATH)/$(APP_DIR) \
-    --targetusername $(ORG_ALIAS) --wait 10 --verbose
+    --sourcepath=$(LOCAL_DIR)/DeltaPackage \
+    --targetusername rgomezflores@deloitte.com \
+	--testlevel RunSpecifiedTests \
+	--runtests ${TESTCLASSES_DEFINITION} \
+	--wait 50 --verbose
     endif
+                        
