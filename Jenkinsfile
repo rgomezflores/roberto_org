@@ -28,142 +28,44 @@ If you do not select this option, you are acceptin to execute the deployment!!
     stages {
         stage('Checkout') {
             steps {
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: 'master']],
-                    userRemoteConfigs: [[url: 'https://github.com/rgomezflores/roberto_org.git']]
-                ])
+                echo '> Checking out the Git version control ...'
+                bat 'make checkout'
             }
         }
+
         stage('Install Salesforce CLI') {
             steps {
-                bat '''
-                    setx PATH "%PATH%;C:\\Program Files\\sfdx\\bin"
-                    "%SFDX%"/sfdx --version
-                '''
+                echo '> Installing Salesforce CLI ...'
+                bat 'make install'
             }
         }
 
         stage('Check Salesforce CLI Installation') {
             steps {
-                bat '"%SFDX%"/sfdx --version'
-                bat '"%SFDX%"/sfdx plugins'
+                echo '> Checking and Updating Salesforce CLI ...'
+                bat 'make check-sfdx'
             }
         }
 
         stage('Install SGD Plugin') {
             steps {
-                script {
-                    bat 'echo y | "C:/Program Files/sfdx/bin/"sfdx plugins:install sfdx-git-delta@latest-rc'
-                }
-                bat '"%SFDX%"/sfdx plugins'
-            }
-        }
-
-        stage('Create Directory') {
-            steps {
-                bat 'cd C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/'
-                dir ('C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage') {
-                    deleteDir()
-                }
-                dir ('C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage') {
-                    writeFile file:'.ignore', text:''
-                }
-            }
-        }
-
-        stage('Parameters Values') {
-            steps {
-                echo "You defined this Start Commit: ${params.StartCommit}"
-                echo "You defined this End Commit: ${params.EndCommit}"
-                echo "You defined this Validation: ${params.Validation_Deployment}"
-                echo "Check option is: ${params.CheckOnly}"
-                echo "TestClasses option is: ${params.TestClasses}"
-                echo "You defined these TestClasses: ${params.TestClasses_definition}"
+                echo '> Installing SGD Plugin ...'
+                bat 'make install-sgd-plugin'
             }
         }
 
         stage('Create Delta Packages') {
             steps {
-                script {
-                    // Authenticate with the org
-                    bat '"C:/Program Files/sfdx/bin/"sfdx force:auth:jwt:grant --clientid 3MVG9ux34Ig8G5eqaSrg9EsUR6AjGT27GketsoLUx3Gt4lX2lMQuSRqVgdI_lN_8ljjohKh4Rl61wwY8IdXZk --jwtkeyfile C:/Users/rgomezflores/Documents/RGF/TMNA/JWT/server.key --username rgomezflores@deloitte.com --instanceurl https://login.salesforce.com --setdefaultdevhubusername'
-                    // Create the delta package
-                    // bat '"C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to "a6a3d70e5cfe800554b27b9aaf45b0dff72fdbe8" --from "587a48df7517a110cb4c382845859f9baaee6715" --output "C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage/" --generate-delta'
-                    bat """"C:/Program Files/sfdx/bin/"sfdx sgd:source:delta --to ${params.EndCommit} --from ${params.StartCommit} --output "C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage/" --generate-delta"""
-                }
+                echo '> Create Delta PAckages ...'
+                bat 'make create-deltaPackage'
             }
         }
 
         stage('Execute Deployment in QA') {
             steps {
-                script {
-                    def env1 = "${params.CheckOnly}"
-                    def env2 = "${params.TestClasses}"
-                    def env3 = "${params.TestClasses_definition}"
-
-                    echo "${env1}"
-                    echo "${env2}"
-                    echo "${env3}"
-
-                    if (env1 == 'true' && env2 == 'true') {
-                        bat """
-                        echo 'You will execute a Validation with TestClasses'
-                        "C:/Program Files/sfdx/bin/"sfdx force:source:deploy -c -p C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage -u rgomezflores@deloitte.com -w 50 --testlevel RunSpecifiedTests --runtests ${env3} --verbose
-                        """
-                    }   
-                    else if (env1 == 'true' && env2 == 'false') {
-                        bat """
-                        echo 'You will execute a Validation without TestClasses'
-                        "C:/Program Files/sfdx/bin/"sfdx force:source:deploy -c -p C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage -u rgomezflores@deloitte.com -w 50 --verbose
-                        """
-                    }  
-                    else if (env1 == 'false' && env2 == 'true') {
-                        bat """
-                        echo 'You will execute a Deployment with TestClasses'
-                        "C:/Program Files/sfdx/bin/"sfdx force:source:deploy -p C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage -u rgomezflores@deloitte.com -w 50 --testlevel RunSpecifiedTests --runtests ${env3} --verbose
-                        """
-                    }
-                    else if (env1 == 'false' && env2 == 'false') {
-                        bat """
-                        echo 'You will execute a Deployment without TestClasses'
-                        "C:/Program Files/sfdx/bin/"sfdx force:source:deploy -p C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org/DeltaPackage -u rgomezflores@deloitte.com -w 50 --verbose
-                        """
-                    } 
-                    else {
-                        echo 'ERROR SELECTIONS'
-                    }
-                }
+                echo '> Executing the Deployment ...'
+                bat 'make deploy'
             }
         }
     }
 }
-
-
-//             when {
-//                 expression {params.CheckOnly == 'true' && params.TestClasses == 'true'}
-//             }
-//             steps {
-//                 echo 'You will execute a Validation with TestClasses'
-//             }
-//         }
-
-//         stage('Execute Deployment in QA: Validation only') {
-//             when {
-//                 expression {params.CheckOnly == 'true' && params.TestClasses == 'false'}
-//                 }
-//             steps {
-//                 echo 'You will execute a Validation without TestClasses'
-//             }
-//         }
-
-//         stage('Execute Deployment in QA:TestClasses') {
-//             when {
-//                 expression {params.CheckOnly == 'false' && params.TestClasses == 'true'}
-//                 }
-//             steps {
-//                 echo 'You will execute a Deployment with TestClasses'
-//             }
-//         }
-//     }
-// }

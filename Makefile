@@ -11,11 +11,9 @@ TESTCLASSES_DEFINITION = ${TestClasses_definition}
 checkout:
 	git clone --branch $(BRANCH) $(REPO_URL) $(LOCAL_DIR)
 
-.PHONY: install_sfdxcli
-
-install_sfdxcli:
+installsfdxcli:
     npm install sfdx-cli --global
-    echo "Successully installed sfdx-cli"
+    @echo "Successully installed sfdx-cli"
     sfdx version
 
 checksfdx:
