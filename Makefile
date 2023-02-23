@@ -12,6 +12,7 @@ TESTCLASSES_DEFINITION = ${TestClasses_definition}
 checkout:
 	@if exist $(LOCAL_DIR) rmdir /s /q $(LOCAL_DIR)
 	git clone --branch $(BRANCH) $(REPO_URL) $(LOCAL_DIR)
+	@if exist $(LOCAL_DIR)/DeltaPackage rmdir /s /q $(LOCAL_DIR)/DeltaPackage
 
 install-sfdxcli:
 	npm install sfdx-cli --globa
