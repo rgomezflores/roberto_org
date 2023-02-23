@@ -12,8 +12,6 @@ TESTCLASSES_DEFINITION = ${TestClasses_definition}
 checkout:
 	@if exist $(LOCAL_DIR) rmdir /s /q $(LOCAL_DIR)
 	git clone --branch $(BRANCH) $(REPO_URL) $(LOCAL_DIR)
-	cd $(LOCAL_DIR)
-	@if exist DeltaPackage rmdir /s /q DeltaPackage
 
 install-sfdxcli:
 	npm install sfdx-cli --globa
@@ -30,7 +28,9 @@ install-sgd-plugin:
 	@echo "Successully installed sfdx-git-delta"
 
 create-deltaPackage:
-	cd $(LOCAL_DIR) && mkdir DeltaPackage && ls -lha && $(SFDX_PATH)sfdx sgd:source:delta --to "$(ENDCOMMIT)" --from "$(STARTCOMMIT)" --output "./DeltaPackage" --generate-delta
+	cd $(LOCAL_DIR)
+	@if exist DeltaPackage rmdir /s /q DeltaPackage
+	mkdir DeltaPackage && ls -lha && $(SFDX_PATH)sfdx sgd:source:delta --to "$(ENDCOMMIT)" --from "$(STARTCOMMIT)" --output "./DeltaPackage" --generate-delta
 
 deploy:
 	$(CHECKONLY)
