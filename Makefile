@@ -28,8 +28,6 @@ install-sgd-plugin:
 	@echo "Successully installed sfdx-git-delta"
 
 create-deltaPackage:
-	$(STARTCOMMIT)
-	$(ENDCOMMIT)
 	cd $(LOCAL_DIR) && mkdir DeltaPackage && ls -lha && $(SFDX_PATH)sfdx sgd:source:delta --to "$(ENDCOMMIT)" --from "$(STARTCOMMIT)" --output "./DeltaPackage" --generate-delta
 
 deploy:
