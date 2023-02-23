@@ -9,12 +9,12 @@ TESTCLASSES = ${TestClasses}
 TESTCLASSES_DEFINITION = ${TestClasses_definition}
 
 checkout:
-	\git clone --branch $(BRANCH) $(REPO_URL) $(LOCAL_DIR)
+	git clone --branch $(BRANCH) $(REPO_URL) $(LOCAL_DIR)
 
 installsfdxcli:
-    \npm install sfdx-cli --globa
-    \@echo "Successully installed sfdx-cli"
-    \sfdx version
+	npm install sfdx-cli --globa
+	@echo "Successully installed sfdx-cli"
+	sfdx version
 
 checksfdx:
 	sfdx update
