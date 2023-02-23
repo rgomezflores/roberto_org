@@ -18,12 +18,12 @@ install-sfdxcli:
 	@echo "Successully installed sfdx-cli"
 	$(SFDX_PATH)sfdx version
 
-checksfdx:
+check-sfdx:
 	$(SFDX_PATH)sfdx update
 	@echo "Successully updated sfdx-cli"
 	$(SFDX_PATH)sfdx version
 
-installsgdplugin:
+install-sgd-plugin:
 	@echo 'y' | sfdx plugins:install sfdx-git-delta@latest-rc
 	@echo "Successully installed sfdx-git-delta"
 	$(SFDX_PATH)sdfx plugins
