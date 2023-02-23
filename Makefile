@@ -33,9 +33,8 @@ create-deltaPackage:
 	mkdir DeltaPackage && $(SFDX_PATH)sfdx sgd:source:delta --to "$(ENDCOMMIT)" --from "$(STARTCOMMIT)" --output "./DeltaPackage" --generate-delta
 
 deploy:
-	ifeq ($(CheckOnly),true)
-		ifeq ($(TestClasses),true)
-		echo 'You will execute a Validation with TestClasses'	
+	ifeq ($(CheckOnly)$(TestClasses),truetrue)
+		echo 'You will execute a Validation with TestClasses' \
 		(SFDX_PATH) sfdx force:source:deploy \
 		--checkonly \
 		--sourcepath=$(LOCAL_DIR)/DeltaPackage \
