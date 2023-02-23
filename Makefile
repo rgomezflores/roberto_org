@@ -2,6 +2,7 @@
 REPO_URL = "https://github.com/rgomezflores/roberto_org"
 BRANCH = master
 LOCAL_DIR = "C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org1"
+SFDX_PATH = "C:/Program Files/sfdx/bin/"
 STARTCOMMIT = ${StartCommit}
 ENDCOMMIT = ${EndCommit}
 CHECKONLY = ${CheckOnly}
@@ -15,17 +16,17 @@ checkout:
 install-sfdxcli:
 	npm install sfdx-cli --globa
 	@echo "Successully installed sfdx-cli"
-	sfdx version
+	$(SFDX_PATH)sfdx version
 
 checksfdx:
-	sfdx update
+	$(SFDX_PATH)sfdx update
 	@echo "Successully updated sfdx-cli"
-	sfdx version
+	$(SFDX_PATH)sfdx version
 
 installsgdplugin:
 	@echo 'y' | sfdx plugins:install sfdx-git-delta@latest-rc
 	@echo "Successully installed sfdx-git-delta"
-	sdfx plugins
+	$(SFDX_PATH)sdfx plugins
 
 create-deltaPackage:
 	$(STARTCOMMIT)
