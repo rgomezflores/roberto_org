@@ -24,7 +24,7 @@ check-sfdx:
 	$(SFDX_PATH)sfdx version
 
 install-sgd-plugin:
-	@echo 'y' | $(SFDX_PATH)sfdx plugins:install sfdx-git-delta
+	@echo 'n' | $(SFDX_PATH)sfdx plugins:install sfdx-git-delta
 	@echo "Successully installed sfdx-git-delta"
 	$(SFDX_PATH)sdfx plugins
 
