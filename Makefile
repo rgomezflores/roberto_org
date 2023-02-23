@@ -12,7 +12,7 @@ checkout:
 	@if exist $(LOCAL_DIR) rmdir /s /q $(LOCAL_DIR)
 	git clone --branch $(BRANCH) $(REPO_URL) $(LOCAL_DIR)
 
-install-sfdxcli:
+install:
 	npm install sfdx-cli --globa
 	@echo "Successully installed sfdx-cli"
 	sfdx version
