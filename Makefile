@@ -18,16 +18,16 @@ installsfdxcli:
 
 checksfdx:
 	sfdx update
-    @echo "Successully updated sfdx-cli"
+	@echo "Successully updated sfdx-cli"
 	sfdx version
 
 installsgdplugin:
 	@echo 'y' | sfdx plugins:install sfdx-git-delta@latest-rc
 	@echo "Successully installed sfdx-git-delta"
-    sdfx plugins
+	sdfx plugins
 
 create-deltaPackage:
-    $(STARTCOMMIT)
+	$(STARTCOMMIT)
 	$(ENDCOMMIT)
 	cd $(LOCAL_DIR) && mkdir DeltaPackage && ls -lha && sfdx sgd:source:delta --to "$(EndCommit)" --from "$(StartCommit)" --output "./DeltaPackage" --generate-delta
 
