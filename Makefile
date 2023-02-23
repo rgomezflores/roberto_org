@@ -26,7 +26,6 @@ check-sfdx:
 install-sgd-plugin:
 	$(SFDX_PATH)sfdx plugins
 	@echo "Successully installed sfdx-git-delta"
-	$(SFDX_PATH)sdfx plugins
 
 create-deltaPackage:
 	$(STARTCOMMIT)
