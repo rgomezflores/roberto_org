@@ -1,7 +1,7 @@
 
 REPO_URL = "https://github.com/rgomezflores/roberto_org"
 BRANCH = master
-LOCAL_DIR = "C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org"
+LOCAL_DIR = "C:/Users/rgomezflores/Documents/RGF/TMNA/repos/Roberto_ORG/roberto_org1"
 STARTCOMMIT = ${StartCommit}
 ENDCOMMIT = ${EndCommit}
 CHECKONLY = ${CheckOnly}
@@ -9,6 +9,7 @@ TESTCLASSES = ${TestClasses}
 TESTCLASSES_DEFINITION = ${TestClasses_definition}
 
 checkout:
+	@if exist $(LOCAL_DIR) rmdir /s /q $(LOCAL_DIR)
 	git clone --branch $(BRANCH) $(REPO_URL) $(LOCAL_DIR)
 
 installsfdxcli:
