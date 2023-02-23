@@ -11,17 +11,17 @@ TESTCLASSES_DEFINITION = ${TestClasses_definition}
 checkout:
 	git clone --branch $(BRANCH) $(REPO_URL) $(LOCAL_DIR)
 
-installsfdxcli:
-    @echo "y" | npm install sfdx-cli --global
-    @echo "Successully installed sfdx-cli"
+install_sfdxcli:
+    npm install sfdx-cli --global
+    echo "Successully installed sfdx-cli"
     sfdx version
 
-check-sfdx:
+checksfdx:
 	sfdx update
     @echo "Successully updated sfdx-cli"
 	sfdx version
 
-install-sgd-plugin:
+installsgdplugin:
 	@echo 'y' | sfdx plugins:install sfdx-git-delta@latest-rc
 	@echo "Successully installed sfdx-git-delta"
     sdfx plugins
