@@ -13,8 +13,9 @@ checkout:
 
 install_sfdxcli:
     npm install sfdx-cli --global
-    echo "Successully installed sfdx-cli"
+    @echo "Successully installed sfdx-cli"
     sfdx version
+.PHONY: install
 
 checksfdx:
 	sfdx update
