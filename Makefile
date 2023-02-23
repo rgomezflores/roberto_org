@@ -34,8 +34,8 @@ create-deltaPackage:
 
 deploy:
 	ifeq ($(CheckOnly)$(TestClasses),TRUETRUE)
-	do echo 'You will execute a Validation with TestClasses'	
-	sfdx force:source:deploy \
+	echo 'You will execute a Validation with TestClasses'	
+	(SFDX_PATH) sfdx force:source:deploy \
 	--checkonly \
 	--sourcepath=$(LOCAL_DIR)/DeltaPackage \
 	--targetusername rgomezflores@deloitte.com \
