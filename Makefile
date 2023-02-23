@@ -30,7 +30,7 @@ install-sgd-plugin:
 create-deltaPackage:
 	$(STARTCOMMIT)
 	$(ENDCOMMIT)
-	cd $(LOCAL_DIR) && mkdir DeltaPackage && ls -lha && $(SFDX_PATH)sfdx sgd:source:delta --to "$(EndCommit)" --from "$(StartCommit)" --output "./DeltaPackage" --generate-delta
+	cd $(LOCAL_DIR) && mkdir DeltaPackage && ls -lha && $(SFDX_PATH)sfdx sgd:source:delta --to "$(ENDCOMMIT)" --from "$(STARTCOMMIT)" --output "./DeltaPackage" --generate-delta
 
 deploy:
 	$(CHECKONLY)
