@@ -38,10 +38,8 @@ deploy:
 	$(TESTCLASSES)
 	$(TESTCLASSES_DEFINITION)
 	cd $(LOCAL_DIR); ls -alh; \
-	sfdx force:source:deploy \
-	--sourcepath=$(APP_PATH)/$(APP_DIR) \
-	--targetusername $(ORG_ALIAS) --wait 10 --verbose
-    ifeq ($(CheckOnly)$(TestClasses),TRUETRUE
+
+    ifeq ($(CheckOnly)$(TestClasses),TRUETRUE)
     do echo 'You will execute a Validation with TestClasses'	
     sfdx force:source:deploy \
     --checkonly \
