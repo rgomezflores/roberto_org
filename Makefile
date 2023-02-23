@@ -24,14 +24,14 @@ check-sfdx:
 	$(SFDX_PATH)sfdx version
 
 install-sgd-plugin:
-	@echo 'n' | $(SFDX_PATH)sfdx plugins:install sfdx-git-delta
+	$(SFDX_PATH)sfdx plugins
 	@echo "Successully installed sfdx-git-delta"
 	$(SFDX_PATH)sdfx plugins
 
 create-deltaPackage:
 	$(STARTCOMMIT)
 	$(ENDCOMMIT)
-	cd $(LOCAL_DIR) && mkdir DeltaPackage && ls -lha && sfdx sgd:source:delta --to "$(EndCommit)" --from "$(StartCommit)" --output "./DeltaPackage" --generate-delta
+	cd $(LOCAL_DIR) && mkdir DeltaPackage && ls -lha && $(SFDX_PATH)sfdx sgd:source:delta --to "$(EndCommit)" --from "$(StartCommit)" --output "./DeltaPackage" --generate-delta
 
 deploy:
 	$(CHECKONLY)
