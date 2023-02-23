@@ -8,11 +8,10 @@ CHECKONLY = ${CheckOnly}
 TESTCLASSES = ${TestClasses}
 TESTCLASSES_DEFINITION = ${TestClasses_definition}
 
-.PHONY: checkout
-.PHONY: install_sfdxcli
-
 checkout:
 	git clone --branch $(BRANCH) $(REPO_URL) $(LOCAL_DIR)
+
+.PHONY: install_sfdxcli
 
 install_sfdxcli:
     npm install sfdx-cli --global
