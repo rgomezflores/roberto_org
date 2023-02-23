@@ -1,5 +1,4 @@
 
-# Variables
 REPO_URL = https://github.com/rgomezflores/roberto_org
 BRANCH = master
 LOCAL_DIR = C:\Users\rgomezflores\Documents\RGF\TMNA\repos\Roberto_ORG\roberto_org
@@ -9,7 +8,6 @@ CHECKONLY = ${CheckOnly}
 TESTCLASSES = ${TestClasses}
 TESTCLASSES_DEFINITION = ${TestClasses_definition}
 
-# Targets
 checkout:
 	git clone --branch $(BRANCH) $(REPO_URL) $(LOCAL_DIR)
 
