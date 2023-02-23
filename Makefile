@@ -8,14 +8,16 @@ CHECKONLY = ${CheckOnly}
 TESTCLASSES = ${TestClasses}
 TESTCLASSES_DEFINITION = ${TestClasses_definition}
 
+.PHONY: checkout
+.PHONY: install_sfdxcli
+
 checkout:
 	git clone --branch $(BRANCH) $(REPO_URL) $(LOCAL_DIR)
 
 install_sfdxcli:
     npm install sfdx-cli --global
-    @echo "Successully installed sfdx-cli"
+    echo "Successully installed sfdx-cli"
     sfdx version
-.PHONY: install
 
 checksfdx:
 	sfdx update
