@@ -60,14 +60,14 @@ ifeq ($(CheckOnly)$(TestClasses),falsetrue)
 	--testlevel RunSpecifiedTests \
 	--runtests ${TESTCLASSES_DEFINITION} \
 	--wait 50 --verbose
-	else
+else
 ifeq ($(CheckOnly)$(TestClasses),falsefalse)
 	@echo "You will execute a Deployment without TestClasses" \
 	$(SFDX_PATH)sfdx force:source:deploy \
 	--sourcepath=$(LOCAL_DIR)/DeltaPackage \
 	--targetusername rgomezflores@deloitte.com \
 	--wait 50 --verbose
-	else
+else
 	Error Deployment Process!!
 endif
 endif
