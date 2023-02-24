@@ -35,7 +35,7 @@ create-deltaPackage:
 
 validation1:
 ifeq ($(CheckOnly)$(TestClasses),truetrue)
-	You will execute a Validation with TestClasses \
+	OUTP1 = You will execute a Validation with TestClasses \
 	(SFDX_PATH)sfdx force:source:deploy \ 
 	--checkonly \ 
 	--sourcepath=$(LOCAL_DIR)/DeltaPackage \
