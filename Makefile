@@ -38,5 +38,5 @@ ifeq ($(CheckOnly)$(TestClasses),truetrue) \
 		OUTP1 = "You will execute a Validation with TestClasses" \
 else \
 		OUTP1 = "Error Fake2" \
-endif \
+endif
 	@echo $(OUTP1)
