@@ -35,7 +35,7 @@ create-deltaPackage:
 
 sfdx-deliver:
 ifeq ($(CheckOnly)$(TestClasses),truetrue)
-	@echo "You will execute a Validation with TestClasses" \
+	@echo "You will execute a Validation with TestClasses"
 	$(SFDX_PATH)sfdx force:source:deploy \
 	--checkonly \
 	--sourcepath=$(LOCAL_DIR)/DeltaPackage \
@@ -45,7 +45,7 @@ ifeq ($(CheckOnly)$(TestClasses),truetrue)
 	--wait 50 --verbose
 else
 ifeq ($(CheckOnly)$(TestClasses),truefalse)
-	@echo "You will execute a Validation without TestClasses" \
+	@echo "You will execute a Validation without TestClasses"
 	$(SFDX_PATH)sfdx force:source:deploy \
 	--checkonly \
 	--sourcepath=$(LOCAL_DIR)/DeltaPackage \
@@ -53,7 +53,7 @@ ifeq ($(CheckOnly)$(TestClasses),truefalse)
 	--wait 50 --verbose
 else
 ifeq ($(CheckOnly)$(TestClasses),falsetrue)
-	@echo "You will execute a Deployment with TestClasses" \
+	@echo "You will execute a Deployment with TestClasses"
 	$(SFDX_PATH)sfdx force:source:deploy \
 	--sourcepath=$(LOCAL_DIR)/DeltaPackage \
 	--targetusername rgomezflores@deloitte.com \
@@ -62,7 +62,7 @@ ifeq ($(CheckOnly)$(TestClasses),falsetrue)
 	--wait 50 --verbose
 else
 ifeq ($(CheckOnly)$(TestClasses),falsefalse)
-	@echo "You will execute a Deployment without TestClasses" \
+	@echo "You will execute a Deployment without TestClasses"
 	$(SFDX_PATH)sfdx force:source:deploy \
 	--sourcepath=$(LOCAL_DIR)/DeltaPackage \
 	--targetusername rgomezflores@deloitte.com \
