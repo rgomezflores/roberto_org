@@ -33,10 +33,12 @@ create-deltaPackage:
 	@if exist DeltaPackage rmdir /s /q DeltaPackage
 	mkdir DeltaPackage && $(SFDX_PATH)sfdx sgd:source:delta --to "$(ENDCOMMIT)" --from "$(STARTCOMMIT)" --output "./DeltaPackage" --generate-delta
 
-sfdx-deliver:
-ifeq ($(CheckOnly)$(TestClasses),truetrue) \
-		OUTP1 = "You will execute a Validation with TestClasses" \
-else \
+validation1:
+ifeq ($(CheckOnly)$(TestClasses),truetrue)
+		OUTP1 = "You will execute a Validation with TestClasses"
+else
 		OUTP1 = "Error Fake2" 
 endif
+
+sfdx-deliver:
 	@echo $(OUTP1)
