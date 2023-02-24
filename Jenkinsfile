@@ -64,7 +64,7 @@ If you do not select this option, you are acceptin to execute the deployment!!
         stage('Conditionals') {
             steps {
                 echo '> Executing the Conditionals ...'
-                bat 'make validation1'
+                sh 'make validation1'
             }
         }
 
