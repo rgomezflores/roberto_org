@@ -31,7 +31,7 @@ install-sgd-plugin:
 create-deltaPackage:
 	cd $(LOCAL_DIR)
 	@if exist DeltaPackage rmdir /s /q DeltaPackage
-	mkdir DeltaPackage && $(SFDX_PATH)sfdx sgd:source:delta --to "$(ENDCOMMIT)" --from "$(STARTCOMMIT)" --output "./DeltaPackage" --generate-delta
+	mkdir DeltaPackage && $(SFDX_PATH)sfdx sgd:source:delta --to "$(ENDCOMMIT)" --from "$(STARTCOMMIT)" --output "./DeltaPackage" --generate-delta \
 
 ifeq ($(CheckOnly)$(TestClasses),truetrue)
 		OUTP1 = "You will execute a Validation with TestClasses"
