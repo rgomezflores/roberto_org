@@ -9,18 +9,18 @@ pipeline {
             description: 'Use the SHA considered the End Commit for your Delta Package', 
         )
         booleanParam(name: 'CheckOnly',
-            description: '''Do you require to execute only validation?
-!!IMPORTANT NOTE!! 
-If you do not select this option, you are acceptin to execute the deployment!!
+            description: '''Validation Only?
+NOTE: If you do not select this option, the deployment will be executed.
 '''
         )
         booleanParam(name: 'TestClasses',
-        description: 'Do you require your execution includes Test Classes?'
+        description: 'Do you need to run the test classes?'
         )
         string(name: 'TestClasses_definition',
-            description: '''Define the Classes that you will be using in your deployment.
+            description: '''Define the list of test classes to be run.
 - Multiple test classes must be seperated by commas.
 - Do not use spaces.
+(Ex:testclass1,testclass2)
 ''' 
         )
     }
