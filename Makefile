@@ -35,9 +35,9 @@ create-deltaPackage:
 
 validation1:
 ifeq ($(CheckOnly)$(TestClasses),truetrue)
-	OUTP1 = "You will execute a Validation with TestClasses"
+	OUTP1 = $(You will execute a Validation with TestClasses}
 else
-	OUTP1 = "Error Fake2" 
+	OUTP1 = $(Error Fake2)
 endif
 
 sfdx-deliver:
