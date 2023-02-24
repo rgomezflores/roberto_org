@@ -64,7 +64,7 @@ If you do not select this option, you are acceptin to execute the deployment!!
         stage('Execute Deployment in QA') {
             steps {
                 echo '> Executing the Deployment ...'
-                bat 'make deploy'
+                bat 'make deploy-sfdx'
             }
         }
     }
