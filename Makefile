@@ -39,3 +39,4 @@ sfdx-deliver:
 	else
 			OUTP1 = "Error Fake2"
 	endif
+	@echo $(OUTP1)
