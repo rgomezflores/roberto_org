@@ -33,18 +33,9 @@ create-deltaPackage:
 	@if exist DeltaPackage rmdir /s /q DeltaPackage
 	mkdir DeltaPackage && $(SFDX_PATH)sfdx sgd:source:delta --to "$(ENDCOMMIT)" --from "$(STARTCOMMIT)" --output "./DeltaPackage" --generate-delta
 
-
-deploy-sfdx:
-	ifeq ($(CheckOnly)$(TestClasses),truetrue)
-	@echo 'You will execute a Validation with TestClasses' \
-	(SFDX_PATH)sfdx force:source:deploy \
-	--checkonly \
-	--sourcepath=$(LOCAL_DIR)/DeltaPackage \
-	--targetusername rgomezflores@deloitte.com \
-	--testlevel RunSpecifiedTests \
-	--runtests ${TESTCLASSES_DEFINITION} \
-	--wait 50 --verbose
+sfdx-deliver:
+	ifeq ($(CheckOnly),true)
+	@echo 'You will execute a Validation with TestClasses'
 	else
 	@echo "Error Fake2"
-	endif
-                        
+	endif                        
