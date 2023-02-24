@@ -53,7 +53,7 @@ else
 	--wait 50 --verbose
 	else
 		ifeq ($(CheckOnly)$(TestClasses),falsetrue)
-		@echo "You will execute a Deployment with TestClasses" \
+	@echo "You will execute a Deployment with TestClasses" \
 		$(SFDX_PATH)sfdx force:source:deploy \
 		--sourcepath=$(LOCAL_DIR)/DeltaPackage \
 		--targetusername rgomezflores@deloitte.com \
@@ -62,7 +62,7 @@ else
 		--wait 50 --verbose
 		else
 			ifeq ($(CheckOnly)$(TestClasses),falsefalse)
-			@echo "You will execute a Deployment without TestClasses" \
+	@echo "You will execute a Deployment without TestClasses" \
 			$(SFDX_PATH)sfdx force:source:deploy \
 			--sourcepath=$(LOCAL_DIR)/DeltaPackage \
 			--targetusername rgomezflores@deloitte.com \
