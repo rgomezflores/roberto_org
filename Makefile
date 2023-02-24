@@ -35,7 +35,14 @@ create-deltaPackage:
 
 validation1:
 ifeq ($(CheckOnly)$(TestClasses),truetrue)
-	You will execute a Validation with TestClasses
+	You will execute a Validation with TestClasses \
+	(SFDX_PATH)sfdx force:source:deploy \ 
+	--checkonly \ 
+	--sourcepath=$(LOCAL_DIR)/DeltaPackage \
+	--targetusername rgomezflores@deloitte.com \
+	--testlevel RunSpecifiedTests \
+	--runtests ${TESTCLASSES_DEFINITION} \
+	--wait 50 --verbose
 else
 	Error Fake2
 endif
