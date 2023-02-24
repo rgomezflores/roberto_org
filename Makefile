@@ -44,32 +44,32 @@ ifeq ($(CheckOnly)$(TestClasses),truetrue)
 	--runtests ${TESTCLASSES_DEFINITION} \
 	--wait 50 --verbose
 else
-	ifeq ($(CheckOnly)$(TestClasses),truefalse)
+ifeq ($(CheckOnly)$(TestClasses),truefalse)
 	@echo "You will execute a Validation without TestClasses" \
 	$(SFDX_PATH)sfdx force:source:deploy \
 	--checkonly \
 	--sourcepath=$(LOCAL_DIR)/DeltaPackage \
 	--targetusername rgomezflores@deloitte.com \
 	--wait 50 --verbose
-	else
-		ifeq ($(CheckOnly)$(TestClasses),falsetrue)
+else
+ifeq ($(CheckOnly)$(TestClasses),falsetrue)
 	@echo "You will execute a Deployment with TestClasses" \
-		$(SFDX_PATH)sfdx force:source:deploy \
-		--sourcepath=$(LOCAL_DIR)/DeltaPackage \
-		--targetusername rgomezflores@deloitte.com \
-		--testlevel RunSpecifiedTests \
-		--runtests ${TESTCLASSES_DEFINITION} \
-		--wait 50 --verbose
-		else
-			ifeq ($(CheckOnly)$(TestClasses),falsefalse)
+	$(SFDX_PATH)sfdx force:source:deploy \
+	--sourcepath=$(LOCAL_DIR)/DeltaPackage \
+	--targetusername rgomezflores@deloitte.com \
+	--testlevel RunSpecifiedTests \
+	--runtests ${TESTCLASSES_DEFINITION} \
+	--wait 50 --verbose
+	else
+ifeq ($(CheckOnly)$(TestClasses),falsefalse)
 	@echo "You will execute a Deployment without TestClasses" \
-			$(SFDX_PATH)sfdx force:source:deploy \
-			--sourcepath=$(LOCAL_DIR)/DeltaPackage \
-			--targetusername rgomezflores@deloitte.com \
-			--wait 50 --verbose
-			else
-			Error Deployment Process!!
-			endif
-		endif
-	endif	
+	$(SFDX_PATH)sfdx force:source:deploy \
+	--sourcepath=$(LOCAL_DIR)/DeltaPackage \
+	--targetusername rgomezflores@deloitte.com \
+	--wait 50 --verbose
+	else
+	Error Deployment Process!!
+endif
+endif
+endif	
 endif
