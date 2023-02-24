@@ -20,7 +20,7 @@ NOTE: If you do not select this option, the deployment will be executed.
             description: '''Define the list of test classes to be run.
 - Multiple test classes must be seperated by commas.
 - Do not use spaces.
-(Ex:testclass1,testclass2)
+Ex:testclass1,testclass2
 ''' 
         )
     }
