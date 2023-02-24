@@ -39,4 +39,4 @@ ifeq ($(CheckOnly)$(TestClasses),truetrue)
 else
 		OUTP1 = "Error Fake2"
 endif
-@echo $(OUTP1)
+	@echo $(OUTP1)
